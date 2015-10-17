@@ -1,0 +1,150 @@
+\documentclass[
+  10pt,
+]{report}
+
+\usepackage[utf8]{inputenc}
+
+\usepackage[]{parskip}
+\usepackage[]{microtype}
+\usepackage[cm]{fullpage}
+\usepackage[ngerman]{babel}
+
+\usepackage[]{amsmath}
+\usepackage[]{amssymb}
+
+\usepackage[]{amsthm}
+\newtheoremstyle{satz}
+  {10pt}        % Abstand nach oben
+  {10pt}        % Abstand nach unten
+  {}            % Schriftart für Textkörper
+  {}            % Einrückung
+  {\bfseries}   % Schriftart für Textkopf („Satz“)
+  {:}           % Symbol nach Textkopf
+  {0.5em}       % Abstand nach Textkopf (\newline ist möglich)
+  {}            % Spezifikation des Textkopfes
+\theoremstyle{satz}
+\newtheorem{satz}{Satz}[section]
+
+\usepackage[]{hyperref}
+
+\begin{document}
+
+\chapter{Kombinatorik}
+\label{cha:kombinatorik}
+
+\section{Grundformeln}
+\label{sec:grundformeln}
+
+Seien $A, B$ endliche Mengen.
+
+\begin{description}
+  \item[Summenregel]
+    $A \cap B = \emptyset
+    \Rightarrow \left| A \cup B \right|
+    = \left| A \right| + \left| B \right|$
+
+  \item[Produktregel]
+    $\left| A \times B \right| = \left| A \right| \cdot \left| B \right|$
+
+  \item[Gleichheitsregel]
+    $\exists$ bijektive Abbildung $f: A \rightarrow B
+    \Rightarrow \left| A \right| = \left| B \right|$
+\end{description}
+
+Sei $n:= \left| A \right|$ und $k:= \left| B \right|$.
+
+\begin{description}
+  \item[Variationen mit Wiederholung (von $n$ Objekten zur Klasse $k$)]
+    Anzahl aller Abbildungen von $A$ in $B = n^k$
+
+  \begin{itemize}
+    \item Verteilung von $n$ Objekten auf $k$ Schubfächer
+    \item Wörter der Länge $n$ mit einem $k$-elementigen Alphabet
+
+      Ein vierstelliger PIN mit 10 Ziffern pro Stelle hat $10^4 = 10000$
+      Möglichkeiten (0000 – 9999).
+  \end{itemize}
+
+  \item[Variationen ohne Wiederholung (von $n$ Objekten zur Klasse $k$)]
+    Anzahl aller injektiven Abbildungen von $A$ in $B = {(k)}_n := k (k-1) \dots
+    (k-n+1)$ (fallende Faktorielle)
+
+    \begin{itemize}
+      \item Verteilung von $n$ Objekten auf $k$ Schubfächer, wobei ein Schubfach
+        nicht mehr als zwei Objekte enthalten darf
+      \item Wörter der Länge $n$ mit einem $k$-elementigen Alphabet, wobei sich
+        keine Buchstaben wiederholen dürfen
+      \item Anzahl der Möglichkeiten für ein Siegerpodest bei 8 Läufern:
+        ${(8)}_3$
+    \end{itemize}
+
+  \item[Permutationen ohne Wiederholung (von $n$ Objekten)]
+    Anzahl der bijektiven Abbildungen von $A$ auf $A$ (und damit auch die Anzahl
+    der injektiven Abbildungen von $A$ auf $A$) = $n!$
+
+  \item[Permutationen mit Wiederholung]
+    Sei $i_1 + \dots + i_k = n$. Anzahl aller Abbildungen
+    $f: A \rightarrow \{b_1, \dots, b_k\}$, bei denen $i_j$ Elemente von $A$ auf
+    $b_j$ abgebildet werden
+    = $\binom{n}{i_1, \dots, i_k} := \frac{n!}{i_1! \dots i_k!}$
+    \begin{itemize}
+      \item Jeder Buchstabe $b_j$ soll $i_j$-mal auftreten. Betrachte das Wort
+        „STATISTIK“. Wie viele Wörter können wir mit diesen Buchstaben bilden,
+        wenn wir die Buchstaben umsortieren?
+
+        Die Länge der Wörter ist $n=9$ und wir haben $k=5$ Buchstaben zur
+        Auswahl. Diese tauchen wie folgt oft auf:
+        \begin{align*}
+          i_1 & = 1 \qquad \text{A}\\
+          i_2 & = 2 \qquad \text{I}\\
+          i_3 & = 1 \qquad \text{K}\\
+          i_4 & = 2 \qquad \text{S}\\
+          i_5 & = 3 \qquad \text{T}
+        \end{align*}
+        Das erste Wort wäre
+        $\text{A}_1 \text{I}_1 \text{I}_2 \text{K}_1 \text{S}_1 \text{S}_2
+        \text{T}_1 \text{T}_2 \text{T}_3 \Rightarrow 9!$ Permutationen. Von
+        diesen müssen wir noch die Permutationen der Buchstaben in sich
+        abziehen, da
+        $\text{A}_1 \text{I}_1 \text{I}_2 \text{K}_1
+        \underline{\text{S}_1 \text{S}_2}
+        \text{T}_1 \text{T}_2 \text{T}_3$
+        und
+        $\text{A}_1 \text{I}_1 \text{I}_2 \text{K}_1
+        \underline{\text{S}_2 \text{S}_1}
+        \text{T}_1 \text{T}_2 \text{T}_3$
+        eigentlich das gleiche Wort sind, obwohl wir $\text{S}_1$ und
+        $\text{S}_2$ vertauscht haben. Dies ist für die Anzahl der entstehenden
+        Wörter aber egal.
+
+        Also haben wir insgesamt $\frac{9!}{1! 2! 1! 2! 3!}$ Möglichkeiten.
+    \end{itemize}
+
+  \item[Kombinationen ohne Wiederholung (von $n$ Objekten zur Klasse $k$)]
+    Anzahl aller $k$-elementigen Teilmengen von $A = \binom{n}{k}$
+
+    \begin{itemize}
+      \item Ziehen von $k$ Elementen ohne Zurücklegen aus einer $n$-elementigen
+        Menge
+    \end{itemize}
+
+  \item[Kombinationen mit Wiederholung (von $n$ Objekten zur Klasse $k$)]
+    Anzahl aller Abbildungen $f: \{a_1, \dots, a_n\} \rightarrow \mathbb{N}$ mit
+    $f(a_1) + \dots + f(a_n) = k = \binom{n+k-1}{k}$
+
+    \begin{itemize}
+      \item siehe dazu
+        \href{https://de.wikipedia.org/wiki/Kombination_(Kombinatorik)#Kombination_mit_Wiederholung}{WP: Kombination (Kombinatorik)}\footnote{\url{https://de.wikipedia.org/wiki/Kombination_(Kombinatorik)\#Kombination_mit_Wiederholung}}
+    \end{itemize}
+\end{description}
+
+\begin{satz}[Multinomialsatz]
+  Es gilt
+  \begin{align*}
+    (a_1 + \dots + a_k)^n
+    = \sum_{i_1 + \dots + i_k = n} \binom{n}{i_1, \dots, i_k} a_1^{i_1} \cdot
+    \dots \cdot a_k^{i_k}
+  \end{align*}
+\end{satz}
+
+\end{document}
