@@ -147,4 +147,332 @@ Sei $n:= \left| A \right|$ und $k:= \left| B \right|$.
   \end{align*}
 \end{satz}
 
+\chapter{Aufgaben}
+\label{cha:aufgaben}
+
+\section{Serie 1}
+\label{sec:serie_1}
+
+\subsection{Aufgabe 1}
+\label{sub:aufgabe_1_1}
+
+Auf wieviele Arten kann man\\
+(a) 8 Türme \qquad (b) $k$ Türme, $1 \leq k \leq 8$\\
+auf einem Schachbrett aufstellen, so dass sie sich nicht gegenseitig bedrohen?
+
+\subsection*{Lösung}
+
+\begin{itemize}
+  \item[(a)] Für den ersten Turm hat man $8 \cdot 8$ Möglichkeiten, für den
+    zweiten nur noch $7 \cdot 7$ Möglichkeiten, etc. Da die Reihenfolge der
+    einzelnen Türme jedoch unerheblich ist, muss man die Anzahl der
+    Permutationen herausrechnen. Das ergibt:
+    \begin{align*}
+      \frac{\prod_{i=1}^8 i^2}{8!} = \frac{{(8!)}^2}{8!} = 8!
+    \end{align*}
+
+  \item[(b)] Genau wie (a), nur dass weniger Türme verteilt werden müssen:
+    \begin{align*}
+      \frac{{({(8)}_k)}^2}{k!}
+    \end{align*}
+\end{itemize}
+
+\subsection{Aufgabe 2}
+\label{sub:aufgabe_1_2}
+
+Es sei
+\begin{align*}
+  E_k^n = \left\{
+    x = (x_1, \dots, x_n)
+    : x_1, \dots, x_n \in \left\{ 0, 1, \dots, k-1 \right\}
+  \right\}
+\end{align*}
+und $c \in E_k^n$. Wie viele Elemente von $E_k^n$ gibt es, die sich von $c$
+an genau $d$ Stellen unterscheiden? Begründen Sie Ihre Antwort!
+
+\subsection*{Lösung}
+
+Es gilt $|E_k^n| = k^n$ (Variationen mit Wiederholung). Weiterhin gibt es
+$\binom{n}{d}$ mögliche Stellen, an denen sich die Elemente von $E_k^n$ von $c$
+unterscheiden können. Für jede dieser Stellen gibt es ${(k-1)}^d$ mögliche
+Belegungen, da sie sich von $c$ \textit{unterscheiden} sollen und damit genau
+eine Zahl weniger aus $\{ 0, 1, \dots, k-1 \}$ zur Verfügung steht.
+
+Daraus folgt, dass die Anzahl der Elemente aus $E_k^n$, die sich von $c$ in
+genau $d$ Stellen unterscheiden,
+\begin{align*}
+  \binom{n}{d} {(k-1)}^d
+\end{align*}
+beträgt.
+
+\subsection{Aufgabe 3}
+\label{sub:aufgabe_1_3}
+
+An einem Tennisturnier nehmen $10$ Spieler teil. Wie viele verschiedene
+Paarungen sind für die erste Runde möglich?
+
+\subsection*{Lösung}
+
+Für das erste Paar gibt es $\binom{10}{2}$ Möglichkeiten, für das zweite nur
+noch $\binom{8}{2}$, etc. Bei $10$ Spielern finden $5$ Spiele statt, sodass
+insgesamt
+\begin{align*}
+  \frac{\binom{10}{2} \cdot \binom{8}{2} \cdot \binom{6}{2} \cdot \binom{4}{2}
+  \cdot \binom{2}{2}}{5!} = 945
+\end{align*}
+Paarungen möglich sind. Wir müssen durch $5!$ teilen, da die Auslosereihenfolge
+egal ist.
+
+\subsection{Aufgabe 4}
+\label{sub:aufgabe_1_4}
+
+\begin{itemize}
+  \item[(a)] Wie viele Möglichkeiten gibt es, $100$ nicht unterscheidbare
+    Pflaumen auf $35$ Studenten aufzuteilen?
+  \item[(b)] Wie viele Möglichkeiten gibt es, wenn zusätzlich gefordert wird,
+    dass jeder Student wenigstens eine Pflaume erhält?
+\end{itemize}
+
+Begründen Sie Ihre Antwort mit Hilfe von Abbildungen!
+
+\subsection*{Lösung}
+
+\begin{itemize}
+  \item[(a)] Seien $s_1, s_2, \dots, s_{35}$ die Studenten. Jedem Studenten muss
+    eine gewissen Anzahl Pflaumen zugeordnet werden. Das heißt wir suchen die
+    Anzahl aller Abbildungen $f : \{s_1, \dots, s_{35}\} \rightarrow
+    \mathbb{N}$, wobei $\sum\limits_{i=1}^{35} f(s_i) = 100$ gelten soll.
+
+    Dies sind alle Kombinationen mit Wiederholung und die Anzahl beträgt
+    $\binom{n+k-1}{k} = \binom{35+100-1}{100} = \binom{134}{100}$.
+
+  \item[(b)] Hier suchen wir die Anzahl aller surjektiven Abbildungen. Um die
+    Anzahl zu bestimmen, soll das Problem kurz visualisiert werden:
+    \begin{align*}
+      \underbrace{%
+        \bullet \mid \bullet \mid \bullet \mid
+        \bullet \mid \bullet \mid \bullet \mid
+        \cdots
+        \mid \bullet \mid \bullet \mid \bullet
+        \mid \bullet \mid \bullet \mid \bullet
+      }_{100 \text{\ Pflaumen, } 99 \text{\ Trennstriche}}
+    \end{align*}
+
+    Ein ausgefüllter Punkt $(\bullet)$ stellt dabei eine Pflaume dar und ein
+    Trennstrich gibt an, dass die Zuordnung der Pflaumen zum nächsten Studenten
+    wechselt. Die vereinfachte Konfiguration $\bullet \bullet \bullet \mid
+    \bullet \bullet \mid \bullet$ bedeutet, dass der erste Student $3$, der
+    zweite Student $2$ und der dritte Student $1$ Pflaume erhält.
+
+    Für die Anzahl aller surjektiven Abbildungen müssen von den $99$
+    Trennstrichen noch $34$ übrig bleiben, d.\,h.\ wir müssen $99-34=65$
+    entnehmen. Damit gibt es $\binom{99}{65}$ Möglichkeiten.
+
+    Alternativ könnte man auch von $100$ unverteilten Pflaumen ausgehen:
+    \begin{align*}
+      \underbrace{%
+        \bullet \bullet \bullet
+        \bullet \bullet \bullet
+        \cdots
+        \bullet \bullet \bullet
+        \bullet \bullet \bullet
+      }_{100 \text{\ Pflaumen}}
+    \end{align*}
+    und in die $99$ Zwischenräume $34$ Trennstriche verteilen. Dies ergibt
+    genauso viele Möglichkeiten wie eben, nämlich
+    $\binom{99}{34} = \binom{99}{65}$.
+\end{itemize}
+
+\subsection{Aufgabe 5}
+\label{sub:aufgabe_1_5}
+
+Beweisen Sie die Vandermonde Identität: für alle natürlichen Zahlen $r, s$ und
+$n$ gilt
+
+\begin{align*}
+  \sum\limits_{k=0}^n \binom{r}{k} \binom{s}{n-k} = \binom{r+s}{n}.
+\end{align*}
+
+\subsection*{Lösung}
+
+Seien $R$ und $S$ disjunkte Mengen mit $|R| = r$ und $|S| = s$.
+
+$\binom{r+s}{n}$ bedeutet, dass wir die Anzahl aller $n$-elementigen Teilmengen
+aus $R \cup S$ bestimmen wollen.
+
+Dabei können $k$ Elemente aus $R$ kommen und die restlichen $(n-k)$ Elemente
+müssen $S$ entstammen. Für ein festes $k$ erhalten wir $\binom{r}{k}
+\binom{s}{n-k}$ Möglichkeiten. Danach müssen wir nur noch über alle $k$ von $0$
+bis $n$ summieren, um alle Möglichkeiten zu berechnen. Dabei stellen die Fälle
+$k > r$ bzw. $n-k > s$ kein Problem dar, da der Binomialkoeffizient dann $0$
+wird und nicht mehr auf die Gesamtanzahl addiert wird.
+
+\section{Serie 2}
+\label{sec:serie_2}
+
+\subsection{Aufgabe 1}
+\label{sub:aufgabe_2_1}
+
+Bestimmen Sie die explizite Lösung der Rekursion
+\begin{align*}
+  y_{n+2} - 7y_{n+1} + 10y_n = 3^n \text{\ für } n \geq 0, y_0 = 0, y_1 = 1.
+\end{align*}
+
+\subsection*{Lösung}
+
+Wir lösen die charakteristische Gleichung der homogenen
+Rekursionsgleichung $\lambda^2 - 7\lambda + 10 = 0$ und erhalten $\lambda_1
+= 2$ und $\lambda_2 = 5$.
+
+Als Ansatz für die spezielle Lösung wählen wir $y_n^{(s)} = c \cdot 3^n$. In
+die Rekursionsgleichung eingesetzt erhalten wir:
+\begin{align*}
+  c \cdot 3^{n+2} - 7 c \cdot 3^{n+1} + 10c \cdot 3^n & = 3^n\\
+  c \cdot 3^2 - 7c \cdot 3^1 + 10c & = 1\\
+  c & = - \frac{1}{2}
+\end{align*}
+Mittels der vorgegebenen Anfangswerte bestimmen wir die Koeffizienten der
+allgemeinen Lösung $y_n^{(a)} = - \frac{1}{2} 3^n + c_1 2^n + c_2 5^n$.
+\begin{align*}
+  n = 0: \quad & - \frac{1}{2} 3^0 + c_1 2^0 + c_2 5^0 = 0\\
+  n = 1: \quad & - \frac{1}{2} 3^1 + c_1 2^1 + c_2 5^1 = 1
+\end{align*}
+Das heißt, wir müssen folgendes Gleichungssystem lösen:
+\begin{align*}
+  c_1 + c_2 & = \frac{1}{2}\\
+  2 c_1 + 5 c_2 & = \frac{5}{2}
+\end{align*}
+Dieses hat die Lösungen $c_1 = 0$ und $c_2 = \frac{1}{2}$ und somit lautet
+die explizite Lösung
+\begin{align*}
+  y_n & =
+    - \frac{1}{2} 3^n + 0 \cdot 2^n + \frac{1}{2} \cdot 5^n
+    = \frac{1}{2} \left( 5^n - 3^n \right)
+\end{align*}
+
+\subsection{Aufgabe 2}
+\label{sub:aufgabe_2_2}
+
+Bestimmen Sie die explizite Lösung der Rekursion
+\begin{align*}
+  y_{n+3} - 5y_{n+2} + 7y_{n+1} - 3y_n = 0
+  \text{\ für } n \geq 0, y_0 = 0, y_1 = 0, y_2 = 4.
+\end{align*}
+
+\subsection*{Lösung}
+
+Wir lösen wieder die charakteristische Gleichung $\lambda^3 - 5\lambda
+^2 + 7\lambda - 3 = 0$. Da alle Koeffizienten ganze Zahlen sind, kommen als
+potenzielle Nullstellen nur Teiler des Absolutglieds ($-3$) infrage.
+Ausprobieren bringt $\lambda_1 = 1$ und damit erhalten wir auch die
+restlichen Nullstellen $\lambda_2 = 1$ und $\lambda_3 = 3$.
+
+Da $\lambda_1 = \lambda_2$, wählen wir folgenden Ansatz für die homogene Lösung:
+\begin{align*}
+  y_n^{(h)} & = c_1 1^n + c_2 \cdot n \cdot 1^n + c_3 3^n
+\end{align*}
+
+Mit den Anfangswerten bestimmten wir wieder die Koeffizienten, indem wir
+folgendes Gleichungssystem lösen:
+\begin{align*}
+  n = 0: \quad & 0 = c_1 + c_3\\
+  n = 1: \quad & 0 = c_1 + c_2 + 3 c_3\\
+  n = 2: \quad & 4 = c_1 + 2 c_2 + 9 c_3
+\end{align*}
+Wir erhalten $c_1 = -1, c_2 = -2$ und $c_3 = 1$, sodass die explizite Lösung
+$y_n = 3^n - 2n - 1$ lautet.
+
+\subsection{Aufgabe 3}
+\label{sub:aufgabe_2_3}
+
+Eine Abschätzung $a_n$ für die Komplexität des Algorithmus
+QUICKSORT zum Sortieren einer $n$-elementigen Liste genügt der Rekursion
+\begin{align*}
+  a_0 = 0, \qquad n a_n = (n+1) a_{n-1} + 2(n-1) \text{\ für } n \geq 1.
+\end{align*}
+Man bestimme eine explizite Formel für $a_n$ und beweise, dass $a_n \leq
+2(n+1)(1 + \ln n)$, also $a_n = O(n \log n)$ gilt.
+
+\subsection*{Lösung}
+
+Es sind $p_n = n$, $q_n = n+1$ und $r_n = 2(n-1)$.
+Damit ist
+$s_n
+  = \frac{1 \cdot 2 \cdot \ldots \cdot (n-1)}{2 \cdot 3 \cdot \ldots \cdot
+    (n+1)}
+  = \frac{1}{n (n+1)}$
+(was auch für den Fall $n=1$ funktioniert) und weiter
+$a_n
+  = \frac{n (n+1)}{n} \left(0 + \sum\limits_{i=1}^n \frac{2(i-1)}{i(i+1)}
+    \right)
+  = 2(n+1) \sum\limits_{i=1}^n \frac{i-1}{i(i+1)}$.
+
+Bleibt zu zeigen, dass $a_n \leq 2(n+1)(1+\ln n)$ gilt:
+\begin{align*}
+  a_n & \leq 2(n+1)(1+\ln n)\\
+  2(n+1) \sum\limits_{i=1}^n \frac{i-1}{i(i+1)} & \leq 2(n+1)(1+\ln n)\\
+  \sum\limits_{i=1}^n \frac{i-1}{i(i+1)} & \leq 1+\ln n
+\end{align*}
+Da
+$\sum\limits_{i=1}^n \frac{i-1}{i(i+1)}
+= 0 + \sum\limits_{i=2}^n \frac{i-1}{i(i+1)}$
+und
+$\sum\limits_{i=2}^n \frac{i-1}{i(i+1)}
+< \sum\limits_{i=2}^n \frac{1}{i}
+< \int_1^n \frac{1}{x} dx = \ln n$, gilt inbesondere die zu zeigende
+Ungleichung.
+
+\subsection{Aufgabe 4}
+\label{sub:aufgabe_2_4}
+
+Man bestimme die Anzahl der Wörter der Länge $n \geq 3$, die
+aus den Buchstaben $a,b,c,d,e$ gebildet werden können und wenigstens einmal
+$a$, wenigstens einmal $b$ und wenigstens einmal $c$ enthalten.
+
+\subsection*{Lösung}
+
+Die Anzahl aller Wörter der Länge $n$ über einem Alphabet von $5$
+Buchstaben beträgt $5^n$. Von dieser Anzahl bestimmen wir mit dem Prinzip
+von Inklusion und Exklusion die Anzahl der gesuchten Wörter.
+
+Die Anzahl der Wörter der Länge $n$, die den Buchstaben $a$ (bzw. $b$ oder
+$c$) nicht enthält, beträgt $4^n$. Die Anzahl der Wörter, die zwei der
+besonderen Buchstaben nicht enthalten, beträgt $3^n$ und die Anzahl der
+Wörter, die alle besonderen Buchstaben nicht enthalten, beträgt $2^n$.
+
+Das PIE liefert uns die gesuchte Anzahl:
+$5^n - 3 \cdot 4^n + 3 \cdot 3^n - 2^n$
+
+\subsection{Aufgabe 5}
+\label{sub:aufgabe_2_5}
+
+\begin{itemize}
+  \item[(a)] Bestimmen Sie die Anzahl aller surjektiven Abbildungen von der
+    Menge $\{1,2,3,4\}$ auf die Menge $\{a,b,c\}$. Geben Sie die Lösung als
+    konkrete Zahl an.
+
+  \item[(b)] Wie groß ist die Anzahl aller Abbildungen einer $n$-elementigen
+    Mengen in eine $k$-elementige Menge, bei denen genau ein Element nicht als
+    Bild vorkommt?
+
+\end{itemize}
+
+\subsection*{Lösung}
+
+\begin{itemize}
+  \item[(a)] Die allgemeine Formel für die Anzahl aller surjektiven Abbildungen
+    einer $n$-e"-le"-men"-ti"-gen Menge in eine $k$-e"-le"-men"-ti"-ge Menge
+    lautet $k! \cdot S_{n,k}$. In diesem Fall also $3! \cdot S_{4,3} = 3! \cdot
+    6 = 36$.
+
+  \item[(b)] Da genau ein Element nicht als Bild vorkommen soll, alle anderen
+    aber schon, suchen wir zunächst die Anzahl aller surjektiven Abbildungen
+    einer $n$-elementigen Menge in eine $(k-1)$-elementige Menge. Diese ist –
+    wie in Teil (a) schon erwähnt – gleich $(k-1)! \cdot S_{n, k-1}$.
+
+    Weiterhin können wir das nicht getroffene Element der $k$-elementigen Menge
+    beliebig wählen, sodass wir mit $k$ multiplizieren müssen. Dies ergibt
+    $k(k-1)! \cdot S_{n, k-1} = k! \cdot S_{n, k-1}$.
+\end{itemize}
+
 \end{document}
