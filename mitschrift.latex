@@ -478,6 +478,9 @@ $5^n - 3 \cdot 4^n + 3 \cdot 3^n - 2^n$
     $k(k-1)! \cdot S_{n, k-1} = k! \cdot S_{n, k-1}$.
 \end{itemize}
 
+\section{Serie 3}
+\label{sec:serie_3}
+
 \subsection{Aufgabe 1}
 \label{sub:aufgabe_3_1}
 
@@ -670,5 +673,383 @@ Andererseits gilt
 Exponentenvergleich führt zu $n^2 = n$
 und da $n \in \mathbb{N}_+$,
 folgt $n = 1$.
+
+\section{Serie 4}
+\label{sec:serie_4}
+
+\subsection{Aufgabe 1}
+\label{sub:aufgabe_4_1}
+
+Sei $M$ die Menge der Matrizen der Form
+$\begin{pmatrix}
+  a & b\\
+  0 & c
+\end{pmatrix}$
+mit $a,b,c \in \mathbb{R}, a, c \neq 0$.
+
+Man zeige: $M$ bildet mit der gewöhnlichen Multiplikation von Matrizen eine
+Gruppe.
+
+\subsection*{Lösung}
+Seien
+$A =
+\begin{pmatrix}
+  a_1 & a_2\\
+  0 & a_3
+\end{pmatrix}$
+und
+$B =
+\begin{pmatrix}
+  b_1 & b_2\\
+  0 & b_3
+\end{pmatrix}$
+mit $a_1, a_2, a_3, b_1, b_2, b_3 \in \mathbb{R}$
+und $a_1, a_3, b_1, b_3 \neq 0$.
+
+Dann ist
+\begin{align*}
+  A \cdot B & =
+  \begin{pmatrix}
+    a_1 & a_2\\
+    0 & a_3
+  \end{pmatrix}
+  \cdot
+  \begin{pmatrix}
+    b_1 & b_2\\
+    0 & b_3
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+    a_1 b_1 & a_1 b_2 + a_2 b_3\\
+    0 & a_3 b_3
+  \end{pmatrix}
+\end{align*}
+wieder eine Matrix aus $M$, da $a_1, a_3, b_1, b_3 \neq 0$ sind.
+
+Assoziativität muss nicht gezeigt werden.
+
+Das neutrale Element ist die Einheitsmatrix:
+\begin{align*}
+  A & = I \cdot A =
+  \begin{pmatrix}
+    1 & 0\\
+    0 & 1
+  \end{pmatrix}
+  \begin{pmatrix}
+    a_1 & a_2\\
+    0 & a_3
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+    a_1 & a_2\\
+    0 & a_3
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+    a_1 & a_2\\
+    0 & a_3
+  \end{pmatrix}
+  \begin{pmatrix}
+    1 & 0\\
+    0 & 1
+  \end{pmatrix}
+  = A \cdot I = A
+\end{align*}
+
+Fehlen nur noch die inversen Elemente zu einer beliebigen Matrix aus $M$:
+\begin{align*}
+  A^{-1} & =
+  \begin{pmatrix}
+    a_1 & a_2\\
+    0 & a_3
+  \end{pmatrix}^{-1}
+  =
+  \frac{1}{\det A} \cdot
+  \begin{pmatrix}
+    a_3 & -a_2\\
+    -0 & a_1
+  \end{pmatrix}
+  =
+  \frac{1}{a_1 a_3} \cdot
+  \begin{pmatrix}
+    a_3 & -a_2\\
+    -0 & a_1
+  \end{pmatrix}
+  =
+  \frac{1}{a_1 a_3} \cdot
+  \begin{pmatrix}
+    a_3 & -a_2\\
+    0 & a_1
+  \end{pmatrix}
+\end{align*}
+Wir weisen das zur Sicherheit nochmal ausführlich nach:
+\begin{align*}
+  A \cdot A^{-1} & =
+  \frac{1}{a_1 a_3} \cdot
+  \begin{pmatrix}
+    a_1 & a_2\\
+    0 & a_3
+  \end{pmatrix}
+  \cdot
+  \begin{pmatrix}
+    a_3 & -a_2\\
+    0 & a_1
+  \end{pmatrix}
+  =
+  \frac{1}{a_1 a_3} \cdot
+  \begin{pmatrix}
+    a_1 a_3 & a_1 a_2 - a_1 a_2\\
+    0 & a_1 a_3
+  \end{pmatrix}
+  =
+  \frac{1}{a_1 a_3} \cdot
+  \begin{pmatrix}
+    a_1 a_3 & 0\\
+    0 & a_1 a_3
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+    1 & 0\\
+    0 & 1
+  \end{pmatrix}\\
+  A^{-1} \cdot A & =
+  \frac{1}{a_1 a_3}
+  \cdot
+  \begin{pmatrix}
+    a_3 & -a_2\\
+    0 & a_1
+  \end{pmatrix}
+  \cdot
+  \begin{pmatrix}
+    a_1 & a_2\\
+    0 & a_3
+  \end{pmatrix}
+  =
+  \frac{1}{a_1 a_3}
+  \cdot
+  \begin{pmatrix}
+    a_1 a_3 & a_2 a_3 - a_2 a_3\\
+    0 & a_1 a_3
+  \end{pmatrix}
+  =
+  \frac{1}{a_1 a_3}
+  \cdot
+  \begin{pmatrix}
+    a_1 a_3 & 0\\
+    0 & a_1 a_3
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+    1 & 0\\
+    0 & 1
+  \end{pmatrix}
+\end{align*}
+
+\subsection{Aufgabe 2}
+\label{sub:aufgabe_4_2}
+
+Man stelle die Verknüpfungstafel für die Gruppen $(P_{12}, \cdot)$ der primen
+Restklassen modulo $12$ auf! Welche Klasse ist zu derjenigen Klasse invers, die
+die $5$ enthält?
+
+\subsection*{Lösung}
+
+Verknüpfungstafel für $(P_{12}, \cdot )$:
+\begin{center}
+  \begin{tabular}{ccccc}
+    $\cdot$
+    & $[1]$ & $[5]$ & $[7]$ & $[11]$\\
+    \cline{2-5}
+    \multicolumn{1}{c|}{$[1]$} &
+    $[1]$ & $[5]$ & $[7]$ & $[11]$\\
+    \multicolumn{1}{c|}{$[5]$} &
+    $[5]$ & $[1]$ & $[11]$ & $[7]$
+    \\
+    \multicolumn{1}{c|}{$[7]$} &
+    $[7]$ & $[11]$ & $[1]$ & $[5]$
+    \\
+    \multicolumn{1}{c|}{$[11]$} &
+    $[11]$ & $[7]$ & $[5]$ & $[1]$
+    \\
+  \end{tabular}
+\end{center}
+
+An der Verknüpfungstafel sehen wir, dass $[5] \cdot [5] \equiv [1] \mod 12$,
+also dass $[5]$ zu sich selbst invers ist.
+
+\subsection{Aufgabe 3}
+\label{sub:aufgabe_4_3}
+
+In der Gruppe der primen Restklasse $(P_n, \cdot)$ mit $n = 2611$ bestimme man
+das inverse Element zur Klasse, die durch $2007$ repräsentiert wird.
+
+\subsection*{Lösung}
+
+Da $\text{ggT}(2611, 2007) = 1$,
+gilt nach dem Satz von Fermat-Euler
+$2007^{\phi(2611)} \equiv 1 \mod 2611$.
+Es ist
+$\phi(2611) = \phi(7 \cdot 373) = \phi(7) \cdot \phi(373) = 6 \cdot 372 = 2232$.
+Das heißt, dass $2007^{2231} \mod 2611$ das inverse Element ist. Diese Zahl
+per Hand auszurechnen ist jedoch deutlich schwieriger als gedacht.
+
+Daher ermitteln wir das multiplikative Inverse altmodisch mit dem Lemma von
+Bézout und dem erweiterten euklidischen Algorithmus, da zwei ganze Zahlen
+$\alpha$ und $\beta$ existieren müssen, für die
+$\text{ggT}(2611, 2007) = 1 = \alpha \cdot 2611 + \beta \cdot 2007$
+gilt. Weil $\alpha \cdot 2611 \equiv 0 \mod 2611$ ist, muss $\beta$ das
+multiplikative Inverse sein.
+
+\begin{center}
+  \begin{tabular}{*{7}{c}}
+    \toprule
+    $a$ & $b$ & $q$ & $\alpha_0$ & $\alpha_1$ & $\beta_0$ & $\beta_1$\\
+    \midrule
+    $2611$ & $2007$ & $1$ & $1$ & $0$ & $0$ & $1$\\
+    $2007$ & $604$ & $3$ & $0$ & $1$ & $1$ & $-1$\\
+    $604$ & $195$ & $3$ & $1$ & $-3$ & $-1$ & $4$\\
+    $195$ & $19$ & $10$ & $-3$ & $10$ & $4$ & $-13$\\
+    $19$ & $5$ & $3$ & $10$ & $-103$ & $-13$ & $134$\\
+    $5$ & $4$ & $1$ & $-103$ & $319$ & $134$ & $-415$\\
+    $4$ & $1$ & $4$ & $319$ & $-422$ & $-415$ & $549$\\
+    $1$ & $0$ & & $-422$ & $2007$ & $549$ & $-2611$
+  \end{tabular}
+\end{center}
+
+Daraus folgt $2007 \cdot 549 \equiv 1 \mod 2611$.
+
+\subsection{Aufgabe 4}
+\label{sub:aufgabe_4_4}
+
+Bestimmen Sie alle irreduziblen Polynome $2$. Grades mit Koeffizienten aus $K =
+\mathbb{Z}_3$, für die der Koeffizient vor $x^2$ gleich $1$ ist.
+
+\subsection*{Lösung}
+
+Wir listen zunächst alle reduziblen Polynome auf.
+Wenn ein Polynom der Form
+$x^2 + ax + b$
+mit
+$a,b \in \mathbb{Z}_3$
+reduzibel ist, dann lässt es sich in Linearfaktoren der Form
+$(x-p)(x-q)$
+faktorisieren, wobei $p$ und $q$ die Nullstellen des Polynoms darstellen.
+Da $a,b,p,q$ aus $\mathbb{Z}_3$ sind, gibt es insgesamt $9$ Polynome, von
+denen $6$ reduzibel sind, weil $(x-p)(x-q) = (x-q)(x-p)$ gilt.
+
+\begin{center}
+  \begin{tabular}{ccl}
+    \toprule
+    $p$ & $q$ & $(x-p)(x-q)$\\
+    \midrule
+    $0$ & $0$ & $x^2$\\
+    $1$ & $0$ & $x^2+2x$\\
+    $1$ & $1$ & $x^2+x+1$\\
+    $2$ & $0$ & $x^2+x$\\
+    $2$ & $1$ & $x^2+2$\\
+    $2$ & $2$ & $x^2+2x+1$
+  \end{tabular}
+\end{center}
+Die fehlenden und damit irreduziblen Polynome sind
+$x^2+1, x^2+x+2$
+und
+$x^2+2x+2$.
+
+\subsection{Aufgabe 5}
+\label{sub:aufgabe_4_5}
+
+Berechnen Sie alle Lösungen $(x_1, x_2, x_3)^T \in \mathbb{Z}_5^3$ des folgenden
+Gleichungssystems mit Koeffizienten aus $\mathbb{Z}_5$.
+\begin{align*}
+  \begin{matrix}
+    x_1 & & & + & 2x_3 & = & 4\\
+    2x_1 & + & x_2 & & & = & 2\\
+    2x_1 & + & 2x_2 & + & x_3 & = & 1\\
+  \end{matrix}
+\end{align*}
+
+\subsection*{Lösung}
+
+\begin{align*}
+  \left(
+    \begin{array}{ccc|c}
+      1 & 0 & 2 & 4\\
+      2 & 1 & 0 & 2\\
+      2 & 2 & 1 & 1
+    \end{array}
+  \right)
+  & \leadsto%
+  \left(%
+    \begin{array}{ccc|c}
+      1 & 0 & 2 & 4\\
+      0 & 1 & 1 & 4\\
+      0 & 2 & 2 & 3
+    \end{array}
+  \right)
+  \leadsto%
+  \left(%
+    \begin{array}{ccc|c}
+      1 & 0 & 2 & 4\\
+      0 & 1 & 1 & 4\\
+      0 & 0 & 0 & 0
+    \end{array}
+  \right)
+\end{align*}
+
+Daraus folgt
+$x_3 = t$,
+$x_2 = 4-t = 4+4t$
+und
+$x_1 = 4-2t = 4+3t$
+mit
+$t \in \mathbb{Z}_5$,
+also
+\begin{align*}
+  \begin{pmatrix}
+    x_1\\
+    x_2\\
+    x_3
+  \end{pmatrix}
+  & =
+  \begin{pmatrix}
+    4\\
+    4\\
+    0
+  \end{pmatrix}
+  + t
+  \begin{pmatrix}
+    3\\
+    4\\
+    1
+  \end{pmatrix}
+  =
+  \left\{
+    \begin{pmatrix}
+      4\\
+      4\\
+      0
+    \end{pmatrix},
+    \begin{pmatrix}
+      2\\
+      3\\
+      1
+    \end{pmatrix},
+    \begin{pmatrix}
+      0\\
+      2\\
+      2
+    \end{pmatrix},
+    \begin{pmatrix}
+      3\\
+      1\\
+      3
+    \end{pmatrix},
+    \begin{pmatrix}
+      1\\
+      0\\
+      4
+    \end{pmatrix}
+  \right\}
+\end{align*}
 
 \end{document}
