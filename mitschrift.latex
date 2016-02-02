@@ -1052,4 +1052,79 @@ also
   \right\}
 \end{align*}
 
+\section{Serie 5}
+\label{sec:serie_5}
+
+\subsection{Aufgabe 1}
+\label{sub:aufgabe_5_1}
+
+Ein zukünftiger Empfänger einer Nachricht wählt die beiden Primzahlen $p = 11, q
+= 17$ und als privaten Schlüssel den Exponenten $g = 97$. Was muss der Empfänger
+dem Absender mitteilen und wie muss der Absender seine Nachricht $a = 20$
+verschlüsseln? Wie kann der Empfänger die übertragene Nachricht wieder
+entschlüsseln?
+
+\subsection*{Lösung}
+
+Gewählt wurden $p = 11, q = 17$ und $g = 97$. Damit sind $n = 187$ und
+$m = (p-1)(q-1) = 160$.
+
+Mit dem erweiterten euklidischen Algorithmus ermitteln wir das
+multiplikative Inverse von $g$ modulo $m$. Da wir diese Aufgabe in den
+letzten zwei Serien ausführlich gelöst haben, schreiben wir nicht erneut die
+komplette Tabelle hin. Es gilt $33 \cdot 97 \equiv 1 \mod 160$, also $k =
+33$.
+
+Der Empfänger $E$ veröffentlicht dem Absender $A$ das Schlüsselpaar $(n, k)
+= (187, 33)$.
+
+$A$ verschlüsselt die Nachricht $a = 20$ wie folgt:
+\begin{align*}
+  e & = a^k \mod n\\
+    & = 20^{33} \mod 187\\
+    & = 3
+\end{align*}
+$E$ entschlüsselt die übertragene Nachricht $e = 3$ auf folgende Weise:
+\begin{align*}
+  b & = e^g \mod n\\
+    & = 3^{97} \mod 187\\
+    & = 20
+\end{align*}
+
+\subsection{Aufgabe 2}
+\label{sub:aufgabe_5_2}
+
+Bei einer Datenübertragung werden $10$ Zahlen $(x_1, x_2, \dots, x_{10})$
+gesendet $(0 \leq x_i \leq 10)$. Beim Empfänger kommen die Werte
+$(3, 1, 4, 1, 4, ?, 4, 1, 7, 10)$ an, der Wert von $x_6$ ist bei der Übertragung
+zerstört worden.
+
+Rekonstruiern Sie den Wert von $x_6$ unter der Voraussetzung, dass für die
+Übertragung die folgende Prüfgleichung für den ISBN-Code gilt:
+\begin{align*}
+  \sum_{i=1}^{10} i \cdot x \equiv 0 \mod 11
+\end{align*}
+
+\subsection*{Lösung}
+
+Die Prüfgleichung des ISBN-Codes führt zu $240 + 6 x_6 \equiv 0 \mod 11$.
+Umstellen bringt $6 x_6 \equiv 2 \mod 11$ und geschicktes Ausprobieren führt zu
+$x_6 = 4$ (aus $6 \cdot 2 \equiv 1 \mod 11$ folgt $2 \cdot 6 \cdot 2 \equiv 2
+\cdot 1 \mod 11$, also $x_6 = 4$).
+
+\subsection{Aufgabe 3}
+\label{sub:aufgabe_5_3}
+
+\subsection*{Lösung}
+
+
+\subsection{Aufgabe 4}
+\label{sub:aufgabe_5_4}
+
+\subsection*{Lösung}
+
+\subsection{Aufgabe 5}
+\label{sub:aufgabe_5_5}
+
+\subsection*{Lösung}
 \end{document}
