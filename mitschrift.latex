@@ -11,9 +11,12 @@
 
 \usepackage[]{amsmath}
 \usepackage[]{amssymb}
+\usepackage[]{mathtools}
 
 \usepackage[]{booktabs}
 \usepackage[]{marvosym}
+\usepackage[]{color}
+\usepackage[dvipsnames]{xcolor}
 
 \usepackage[]{amsthm}
 \newtheoremstyle{satz}
@@ -29,6 +32,10 @@
 \newtheorem{satz}{Satz}[section]
 
 \usepackage[]{hyperref}
+
+\newcommand{\B}{\textsf{B}}
+\newcommand{\NB}{\textsf{NB}}
+\newcommand{\mfrac}[2]{\dfrac{\strut\ #1}{\strut\ #2}}
 
 \begin{document}
 
@@ -1171,4 +1178,225 @@ $x_6 = 4$ (aus $6 \cdot 2 \equiv 1 \mod 11$ folgt $2 \cdot 6 \cdot 2 \equiv 2
 \label{sub:aufgabe_5_5}
 
 \subsection*{Lösung}
+
+\section{Beispielklausur 25. März 2014}
+\label{sec:beispielklausur_2014-3-25}
+
+
+\subsection{Aufgabe 4}
+\label{sub:aufgabe_bsp_2014-3-25_4}
+
+Geben Sie die optimale Lösung und den optimalen Wert der Zielfunktion von
+folgendem linearen Optimierungsproblem an, indem Sie die Simplexmethode unter
+Verwendung der Regel von \textsc{Bland} verwenden!
+
+\begin{align*}
+  x_1 - x_4 - 4x_5 & = 2\\
+  x_2 + 2x_4 + x_5 & = 1\\
+  x_3 - 3x_4 + x_5 & = 3\\
+  \mathbf{x} & \geq \mathbf{0}\\
+  2x_1 + x_2 + 2x_3 + 15x_4 - x_5 & \rightarrow \max
+\end{align*}
+
+(Hinweis: Es ist sofort eine 1. zulässige Basislösung ablesbar.)
+
+\subsection*{Lösung}
+
+Da in den drei Gleichungen nur die Variablen $x_4$ und $x_5$ jeweils mehrmals
+auftauchen, setzt man diese gleich $0$ und erhält so die erste Basislösung:
+\begin{align*}
+  \mathbf{x}^{\B} = \begin{pmatrix}
+    2\\
+    1\\
+    3\\
+    0\\
+    0
+  \end{pmatrix}
+\end{align*}
+Der Wert der Zielfunktion für $\mathbf{x}^{\B}$ lautet $4+1+6 = 11$.
+
+Wir wählen $\B = \{1,2,3\}$ und $\NB = \{4,5\}$, denn damit gilt:
+\begin{align*}
+  A_{\B} & = \begin{pmatrix}
+  1 & 0 & 0\\
+  0 & 1 & 0\\
+  0 & 0 & 1
+  \end{pmatrix}
+  \qquad
+  A_{\NB} = \begin{pmatrix}
+  -1 & -4\\
+  2 & 1\\
+  -3 & 1
+  \end{pmatrix}\\
+\end{align*}
+Da $A_{\B}$ die Einheitsmatrix ist, ist auch $A_{\B}^{-1}$ die Einheitsmatrix.
+Damit gilt:
+\begin{align*}
+  s & = A_{\B}^{-1} b = b = \begin{pmatrix}
+    2\\
+    1\\
+    3
+  \end{pmatrix}
+  \qquad
+  R = A_{\B}^{-1} A_{\NB} = A_{\NB}
+\end{align*}
+
+Es ergibt sich folgende Simplextabelle nach \textsc{Strauß}:
+\begin{align*}
+  \begin{array}{c|c|cc|c}
+    & & 4 & 5 & \\\hline
+    & -1 & 15 & -1 & \\\hline
+    1 & 2 & -1 & -4 & 2\\
+    2 & 1 & 2 & 1 & 1\\
+    3 & 2 & -3 & 1 & 3\\\hline
+      & & \textcolor{blue}{-21} & \textcolor{red}{-4} & \textcolor{magenta}{11}
+  \end{array}
+  \qquad
+  \begin{array}{rllll}
+    \textcolor{blue}{-21} & = (-1) \cdot 15 & + 2 \cdot (-1) & + 1 \cdot 2 & + 2 \cdot (-3)\\
+    \textcolor{red}{-4} & = (-1) \cdot (-1) & + 2 \cdot (-4) & + 1 \cdot 1 & + 2 \cdot 1\\
+    \textcolor{magenta}{11} & = & \phantom{+} 2 \cdot 2 & + 1 \cdot 1 & + 2 \cdot 3\\
+  \end{array}
+\end{align*}
+
+Diese überführen wir kurz in die \textsc{Engel}sche Form (mit derer wir auch
+weiterrechnen):
+\begin{align*}
+  \begin{array}{c|c|cc}
+    & & 4 & 5\\\hline
+    & \textcolor{magenta}{11} & \textcolor{blue}{-21} & \textcolor{red}{-4}\\\hline
+    1 & 2 & -1 & -4\\
+    2 & 1 & 2 & 1\\
+    3 & 3 & -3 & 1
+  \end{array}
+\end{align*}
+
+Nach der Regel von \textsc{Bland} müssen wir die Spalte $l$ so wählen, dass $g_l
+< 0$ gilt und unter dieser Bedingung $\gamma_l$ minimal ist. $g^T$ ist bei uns
+$(\textcolor{blue}{-21}, \textcolor{red}{-4})$ und $\gamma = \{4,5\}$. Also
+wählen wir $l = 1$, weil sowohl $-21$ und $-4$ negativ sind und $4 < 5$ gilt.
+
+Danach müssen wir die Zeile $k$ so wählen, dass $r_{kl} > 0$ gilt und da in der
+ersten Spalte nur die $2$ positiv ist, brauchen wir den Rest gar nicht beachten.
+Wir wählen also $k = 2$.
+
+Jetzt führen wir den Austausch nach Satz 4.4.3. aus. Unser Pivotelement ist
+$r_{21} = 2$. Wir tauschen $\beta_2$ mit $\gamma_1$ und erhalten zunächst
+folgende Simplextabelle:
+\begin{align*}
+  \begin{array}{c|c|cc}
+    & & 2 & 5\\\hline
+    & & & \\\hline
+    1 & & & \\
+    4 & & & \\
+    3 & & &
+  \end{array}
+\end{align*}
+Wir bestimmen jetzt nach und nach die neuen Elemente der Simplextabelle. Dafür
+gehen wir die Fälle von Satz 4.4.3. von oben nach unten durch.
+
+\begin{itemize}
+  \item $r'_{ij} = \dfrac{1}{r_{ij}}$, falls $i = k, j = l$: wir betrachten nur
+    das Pivotelement. Es gilt $r'_{kl} = \dfrac{1}{r_{kl}} = \dfrac{1}{2}$ und
+    wir erhalten das Zwischenergebnis:
+    \begin{align*}
+      \begin{array}{c|c|cc}
+        & & 2 & 5\\\hline
+        & & & \\\hline
+        1 & & & \\
+        4 & & \mfrac{1}{2} & \\
+        3 & & &
+      \end{array}
+    \end{align*}
+  \item $r'_{ij} = \dfrac{r_{ij}}{r_{kl}}$, falls $i=k, j \in \{0, \ldots, n\}
+    \setminus \{ l \}$: wir betrachten die Zeile des Pivotelements. Dabei teilen
+    wir alle Elemente der Zeile durch das Pivotelement (außer das Pivotelement
+    natürlich).  Das Vorzeichen ändert sich dabei nicht. Wir erhalten das
+    Zwischenergebnis:
+    \begin{align*}
+      \begin{array}{c|c|cc}
+        & & 2 & 5\\\hline
+        & & & \\\hline
+        1 & & & \\
+        4 & \mfrac{1}{2} & \mfrac{1}{2} & \mfrac{1}{2}\\
+        3 & & &
+      \end{array}
+    \end{align*}
+  \item $r'_{ij} = -\dfrac{r_{ij}}{r_{kl}}$, falls $i \in \{0, \ldots, m\}
+    \setminus \{ k \}, j = l$: wir betrachten die Spalte des Pivotelements.
+    Dabei teilen wir alle Elemente der Spalte durch das Pivotelement (außer das
+    Pivotelement natürlich) und ändern das Vorzeichen. Wir erhalten das
+    Zwischenergebnis:
+    \begin{align*}
+      \begin{array}{c|c|cc}
+        & & 2 & 5\\\hline
+        & & \mfrac{21}{2} & \\\hline
+        1 & & \mfrac{1}{2} & \\
+        4 & \mfrac{1}{2} & \mfrac{1}{2} & \mfrac{1}{2}\\
+        3 & & \mfrac{3}{2} &
+      \end{array}
+    \end{align*}
+  \item $r'_{ij} = r_{ij} - \dfrac{r_{il} \cdot r_{kj}}{r_{kl}}$, falls $i \in
+    \{0, \ldots, m\} \setminus \{k\}, j \in \{0, \ldots, n\} \setminus \{l\}$:
+    wir betrachten die restlichen Elemente. Ich versuche erst gar nicht, das in
+    Worte zu fassen. Stattdessen schauen wir uns einen Teil der ursprünglichen
+    Simplextabelle an und benutzen Farben zur Veranschaulichung:
+    \begin{align*}
+      \begin{array}{c|c|cc}
+        & & 4 & 5\\\hline
+        & \textcolor{blue}{11} & \textcolor{OliveGreen}{-21} &\\\hline
+        1 & & &\\
+        2 & \textcolor{red}{1} & \textcolor{RubineRed}{2} &\\
+        3 & & &
+      \end{array}
+    \end{align*}
+    Wir wollen das neue $r'_{00}$ berechnen. Unser Pivotelement ist
+    $\textcolor{RubineRed}{r_{21}} = \textcolor{RubineRed}{2}$. Wie zuvor schon
+    erwähnt ist $k = 2$ und $l = 1$.
+
+    Es gilt also:
+    \begin{align*}
+      r'_{ij} &
+      = r'_{00}
+      = \textcolor{blue}{r_{ij}} - \frac{\textcolor{OliveGreen}{r_{il}} \cdot
+        \textcolor{red}{r_{kj}}}{\textcolor{RubineRed}{r_{kl}}}
+      = \textcolor{blue}{r_{00}} - \frac{\textcolor{OliveGreen}{r_{01}} \cdot
+        \textcolor{red}{r_{20}}}{\textcolor{RubineRed}{r_{21}}}
+      = \textcolor{blue}{11} - \frac{\textcolor{OliveGreen}{(-21)} \cdot
+        \textcolor{red}{1}}{\textcolor{RubineRed}{2}}
+      = \frac{22}{2} + \frac{21}{2} = \frac{43}{2}
+    \end{align*}
+    Nach diesem Muster berechnet man die restlichen Einträge, sodass man zu
+    folgendem Ergebnis kommt:
+    \begin{align*}
+      \begin{array}{c|c|cc}
+        & & 2 & 5\\\hline
+        & \mfrac{43}{2} & \mfrac{21}{2} & \mfrac{13}{2}\\\hline
+        1 & \mfrac{5}{2} & \mfrac{1}{2} & -\mfrac{7}{2}\\
+        4 & \mfrac{1}{2} & \mfrac{1}{2} & \mfrac{1}{2}\\
+        3 & \mfrac{9}{2} & \mfrac{3}{2} & \mfrac{5}{2}
+      \end{array}
+    \end{align*}
+    Da $\frac{21}{2}$ und $\frac{13}{2}$ beide größer als $0$ sind, sind wir
+    schon fertig (siehe Satz 4.5.2.). Der optimale Wert der Zielfunktion steht links oben
+    ($\frac{43}{2}$) und die optimale Lösung steht in der linken Spalte:
+    \begin{align*}
+      \begin{pmatrix}
+        x_1\\
+        x_2\\
+        x_3\\
+        x_4\\
+        x_5
+      \end{pmatrix}
+      =
+      \begin{pmatrix}
+        \mfrac{5}{2}\\
+        0\\
+        \mfrac{9}{2}\\
+        \mfrac{1}{2}\\
+        0
+      \end{pmatrix}
+    \end{align*}
+\end{itemize}
+
 \end{document}
