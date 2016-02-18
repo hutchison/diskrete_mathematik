@@ -83,10 +83,10 @@ Sei $n:= \left| A \right|$ und $k:= \left| B \right|$.
 
   \item[Permutationen ohne Wiederholung (von $n$ Objekten)]
     Anzahl der bijektiven Abbildungen von $A$ auf $A$ (und damit auch die Anzahl
-    der injektiven Abbildungen von $A$ auf $A$) = $n!$
+    der injektiven Abbildungen von $A$ auf $A$) = $n!{}$
 
   \item[Permutationen mit Wiederholung]
-    Sei $i_1 + \dots + i_k = n$. Anzahl aller Abbildungen
+    Sei $i_1 + \cdots + i_k = n$. Anzahl aller Abbildungen
     $f: A \rightarrow \{b_1, \dots, b_k\}$, bei denen $i_j$ Elemente von $A$ auf
     $b_j$ abgebildet werden
     = $\binom{n}{i_1, \dots, i_k} := \frac{n!}{i_1! \dots i_k!}$
@@ -106,7 +106,7 @@ Sei $n:= \left| A \right|$ und $k:= \left| B \right|$.
         \end{align*}
         Das erste Wort wäre
         $\text{A}_1 \text{I}_1 \text{I}_2 \text{K}_1 \text{S}_1 \text{S}_2
-        \text{T}_1 \text{T}_2 \text{T}_3 \Rightarrow 9!$ Permutationen. Von
+        \text{T}_1 \text{T}_2 \text{T}_3 \Rightarrow 9!{}$ Permutationen. Von
         diesen müssen wir noch die Permutationen der Buchstaben in sich
         abziehen, da
         $\text{A}_1 \text{I}_1 \text{I}_2 \text{K}_1
@@ -133,7 +133,7 @@ Sei $n:= \left| A \right|$ und $k:= \left| B \right|$.
 
   \item[Kombinationen mit Wiederholung (von $n$ Objekten zur Klasse $k$)]
     Anzahl aller Abbildungen $f: \{a_1, \dots, a_n\} \rightarrow \mathbb{N}$ mit
-    $f(a_1) + \dots + f(a_n) = k = \binom{n+k-1}{k}$
+    $f(a_1) + \cdots + f(a_n) = k = \binom{n+k-1}{k}$
 
     \begin{itemize}
       \item siehe dazu
@@ -144,9 +144,9 @@ Sei $n:= \left| A \right|$ und $k:= \left| B \right|$.
 \begin{satz}[Multinomialsatz]
   Es gilt
   \begin{align*}
-    (a_1 + \dots + a_k)^n
-    = \sum_{i_1 + \dots + i_k = n} \binom{n}{i_1, \dots, i_k} a_1^{i_1} \cdot
-    \dots \cdot a_k^{i_k}
+    {(a_1 + \cdots + a_k)}^n
+    = \sum_{i_1 + \cdots + i_k = n} \binom{n}{i_1, \ldots, i_k} a_1^{i_1} \cdot
+    \ldots \cdot a_k^{i_k}
   \end{align*}
 \end{satz}
 
@@ -154,7 +154,7 @@ Sei $n:= \left| A \right|$ und $k:= \left| B \right|$.
 \label{cha:kodierungstheorie}
 
 Gegeben sei ein Alphabet $A$. Wir wollen die Elemente von $A$ als
-$n$-dimensionale Vektoren mit Elementen aus $\{0, 1\}$, d.\,h. als Elemente von
+$n$-dimensionale Vektoren mit Elementen aus $\{0, 1\}$, d.\,h.\ als Elemente von
 $K^{n \times 1}$ mit $K := \mathbb{Z}/_2$ darstellen. Verschiedene Zeichen
 sollen natürlich verschiedene Vektoren entsprechen. Tritt bei der Übetragung der
 Vektoren an höchstens einer Stelle ein Fehler auf, so soll das ursprüngliche
@@ -183,9 +183,9 @@ maximal ist.
 Wir konstruieren nun einen solchen perfekten Code im Spezialfall $n = 2^l - 1$,
 wobei $l \in \mathbb{N} \setminus \{ 0 \}$ ist.
 
-Für $a \in \{1, \dots, 2^l-1\}$ sei $\mathbf{h}_a$ derjenige Vektor $(h_{1a},
-h_{2a}, \dots, h_{la})^T$, für den $a = h_{la} 2^{l-1} + h_{l-1,a} 2^{l-2} +
-\ldots + h_{1a}$ gilt. $\mathbf{h}_a$ kann also als Binärdarstellung von $a$
+Für $a \in \{1, \dots, 2^l-1\}$ sei $\mathbf{h}_a$ derjenige Vektor ${(h_{1a},
+h_{2a}, \dots, h_{la})}^T$, für den $a = h_{la} 2^{l-1} + h_{l-1,a} 2^{l-2} +
+\cdots + h_{1a}$ gilt. $\mathbf{h}_a$ kann also als Binärdarstellung von $a$
 angesehen werden.
 
 Sei $H = (\mathbf{h_1} \mid \ldots \mid \mathbf{h}_{2^l - 1})$. Offenbar ist
@@ -267,8 +267,8 @@ insgesamt
   \frac{\binom{10}{2} \cdot \binom{8}{2} \cdot \binom{6}{2} \cdot \binom{4}{2}
   \cdot \binom{2}{2}}{5!} = 945
 \end{align*}
-Paarungen möglich sind. Wir müssen durch $5!$ teilen, da die Auslosereihenfolge
-egal ist.
+Paarungen möglich sind. Wir müssen durch $5!{}$ teilen, da die
+Auslosereihenfolge egal ist.
 
 \subsection{Aufgabe 4}
 \label{sub:aufgabe_1_4}
