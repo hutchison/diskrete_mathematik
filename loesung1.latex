@@ -1,0 +1,319 @@
+\documentclass[
+%% alle weiteren Papierformat einstellbar:
+a4paper, %apaper,
+%% keine Seitenzahlen:
+%empty,
+%% Schriftgröße (12pt, 11pt (Standard)):
+11pt,
+%% kleinere Überschriften:
+%smallheadings,
+]
+{scrartcl}
+
+% _das_ Mathepaket schlechthin:
+\usepackage[
+  %% Nummerierung von Gleichungen links:
+  leqno,
+  %% Ausgabe von Gleichungen linksbündig:
+  fleqn,
+]{mathtools}
+% und dazu noch ein paar Mathesymbole und so:
+% (muss vor mathspec geladen werden)
+\usepackage{amsmath, amssymb}
+
+\usepackage[]{parskip}
+
+% Um auch schöne Schriftarten auswählen zu können:
+\usepackage[MnSymbol]{mathspec}
+% Wir wollen, dass alle unsere Schriften für TeX und einander angepasst sind:
+\defaultfontfeatures{Mapping=tex-text, Scale=MatchLowercase}
+% Die Hauptschriftart:
+\setmainfont[Numbers=OldStyle]{Minion Pro}
+% Die Matheschriftart:
+\setmathsfont(Digits,Latin,Greek)[
+  Numbers={Lining, Proportional}
+]{Minion Pro}
+% Die Schriftart für serifenlose Texte (z.B. Überschriften):
+\setallsansfonts[]{Minion Pro}
+% Und die Schriftart für nichtproportionale Texte:
+\setallmonofonts[]{Fira Mono}
+
+% Deutsche Sprache bei Silbentrennung und Datum:
+\usepackage[ngerman]{babel}
+
+% St. Mary Road, liefert Symbole für theoretische Informatik (z.B. \lightning):
+\usepackage{stmaryrd}
+
+% nutze die volle Seite als Satzspiegel:
+\usepackage[
+  % Randbreite sei 1cm (sonst ist sie 1in):
+  cm,
+  % Kopf- und Fußzeile werden miteinbezogen:
+  headings
+]{fullpage}
+% verbesserte Tabellen
+% bietet u.a. die Spaltenmöglichkeit 'm{width}' = zentrierte Spalte mit fester
+% Breite
+\usepackage{array}
+% kann komplexe Linien in Tabellen ziehen:
+%\usepackage{hhline}
+% mehrseitige Tabellen:
+%\usepackage{longtable}
+% Tabellen mit gedehnten Spalten:
+%\usepackage{tabularx}
+% Pimpt enumerate auf (optionales Argument liefert Nummerierung):
+%\usepackage{enumerate}
+% Kann descriptions auf die selbe Höhe bringen:
+%\usepackage{enumitem}
+% Liefert Hyperlinks (\hyperref, \url, \href}
+\usepackage{hyperref}
+% Farben (wie bei TikZ):
+%\usepackage{xcolor}
+% Ändert den Zeilenabstand:
+\usepackage[
+  % nur eine Möglichkeit auswählen:
+  singlespacing
+  %onehalfspacing
+  %doublespacing
+]{setspace}
+% Schönere Tabellen
+% dazu gibt's neue Kommandos:
+% - \toprule[(Dicke)], \midrule[(Dicke)], \bottomrule[(Dicke)]
+% - \addlinespace: Extrahöhe zwischen Zeilen
+\usepackage{booktabs}
+% Schöne numerische Zitierungen:
+%\usepackage{cite}
+% Verbessert den Satz von Abbildungsüberschriften:
+%\usepackage{caption}
+% Ermöglicht durch \begin{linenumbers} Zeilennummern anzuzeigen:
+%\usepackage{lineno}
+% Ermöglicht Zugriff auf die letzte Seite (z.B. \pageref{LastPage}):
+\usepackage{lastpage}
+% Quelltext schön setzen:
+%\usepackage{listings}
+% Logische Beweise:
+%\usepackage{bussproofs}
+% Unterstreichungen (\uline, \uuline, \sout: durchgestrichen, \uwave):
+%\usepackage{ulem}
+% Kann alle möglichen Maße ändern
+% will man Querformat, dann:
+%\usepackage[landscape]{geometry}
+% bietet gestrichelte vert. Linien in Tabellen (':')
+%\usepackage{arydshln}
+% Quelltext schön setzen:
+% (verlangt "xelatex -shell-escape"!)
+%\usepackage{minted}
+% um Bilder einzubinden:
+%\usepackage{graphicx}
+% um in Tabellen eine Zelle über mehrere Zeilen laufen zu lassen:
+%\usepackage{multirow}
+
+% Coole Zeichnungen:
+%\usepackage{tikz}
+%\usetikzlibrary{
+  %backgrounds,
+  %mindmap,
+  %shapes.geometric,
+  %shapes.symbols,
+  %shapes.misc,
+  %shapes.multipart,
+  %positioning,
+  %fit,
+  %calc,
+  %arrows,
+  %automata,
+  %trees,
+  %decorations.pathreplacing,
+%}
+
+% eigens gebaute Lochmarken:
+%\usepackage{eso-pic}
+%\AddToShipoutPicture*{
+  %\put(\LenToUnit{0mm},\LenToUnit{228.5mm})
+    %{\rule{\LenToUnit{20pt}}{\LenToUnit{0.5pt}}}
+  %\put(\LenToUnit{0mm},\LenToUnit{68.5mm})
+    %{\rule{\LenToUnit{20pt}}{\LenToUnit{0.5pt}}}
+%}
+
+% coole Kopf- und Fußzeilen:
+\usepackage{fancyhdr}
+% Seitenstil ist natürlich fancy:
+\pagestyle{fancy}
+% alle Felder löschen:
+\fancyhf{}
+% Veranstaltung:
+\fancyhead[L]{Diskrete Strukturen und Optimierung}
+% Seriennummer:
+\fancyhead[C]{Serie 1}
+% Name und Matrikelnummer:
+\fancyhead[R]{Martin Darmüntzel (7251955)}
+%\fancyfoot[L]{}
+%\fancyfoot[C]{\thepage}
+\fancyfoot[C]{\thepage\,/\,\pageref{LastPage}}
+% Linie oben/unten:
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.0pt}
+
+\begin{document}
+
+% Punktetabelle für Korrektoren:
+\begin{center}
+  \begin{tabular}{cccccc}
+    \toprule
+    \textbf{1.1} & \textbf{1.2} & \textbf{1.3} & \textbf{1.4} & \textbf{1.5} & $\Sigma$\\
+    \midrule
+    & & & & & \\
+    \bottomrule
+  \end{tabular}
+\end{center}
+
+\subsection*{1.1}
+\label{sub:1_1}
+
+\begin{itemize}
+  \item[$\bigstar$] Auf wieviele Arten kann man\\
+    (a) 8 Türme \qquad (b) $k$ Türme, $1 \leq k \leq 8$\\
+    auf einem Schachbrett aufstellen, so dass sie sich nicht gegenseitig
+    bedrohen?
+
+  \item[(a)] Für den ersten Turm hat man $8 \cdot 8$ Möglichkeiten, für den
+    zweiten nur noch $7 \cdot 7$ Möglichkeiten, etc. Da die Reihenfolge der
+    einzelnen Türme jedoch unerheblich ist, muss man die Anzahl der
+    Permutationen herausrechnen. Das ergibt:
+    \begin{align*}
+      \frac{\prod_{i=1}^8 i^2}{8!} = \frac{{(8!)}^2}{8!} = 8!
+    \end{align*}
+
+  \item[(b)] Genau wie (a), nur dass weniger Türme verteilt werden müssen:
+    \begin{align*}
+      \frac{{({(8)}_k)}^2}{k!}
+    \end{align*}
+\end{itemize}
+
+\subsection*{1.2}
+\label{sub:1_2}
+
+\begin{itemize}
+  \item[$\bigstar$] Es sei
+    \begin{align*}
+      E_k^n = \left\{
+        x = (x_1, \dots, x_n)
+        : x_1, \dots, x_n \in \left\{ 0, 1, \dots, k-1 \right\}
+      \right\}
+    \end{align*}
+    und $c \in E_k^n$. Wie viele Elemente von $E_k^n$ gibt es, die sich von $c$
+    an genau $d$ Stellen unterscheiden? Begründen Sie Ihre Antwort!
+\end{itemize}
+
+Es gilt $|E_k^n| = k^n$ (Variationen mit Wiederholung). Weiterhin gibt es
+$\binom{n}{d}$ mögliche Stellen, an denen sich die Elemente von $E_k^n$ von $c$
+unterscheiden können. Für jede dieser Stellen gibt es ${(k-1)}^d$ mögliche
+Belegungen, da sie sich von $c$ \textit{unterscheiden} sollen und damit genau
+eine Zahl weniger aus $\{ 0, 1, \dots, k-1 \}$ zur Verfügung steht.
+
+Daraus folgt, dass die Anzahl der Elemente aus $E_k^n$, die sich von $c$ in
+genau $d$ Stellen unterscheiden,
+\begin{align*}
+  \binom{n}{d} {(k-1)}^d
+\end{align*}
+beträgt.
+
+\subsection*{1.3}
+\label{sub:1_3}
+
+\begin{itemize}
+  \item[$\bigstar$] An einem Tennisturnier nehmen $10$ Spieler teil. Wie viele
+    verschiedene Paarungen sind für die erste Runde möglich?
+\end{itemize}
+
+Für das erste Paar gibt es $\binom{10}{2}$ Möglichkeiten, für das zweite
+nur noch $\binom{8}{2}$, etc. Bei $10$ Spielern finden $5$ Spiele statt, sodass
+insgesamt
+\begin{align*}
+  \binom{10}{2} \cdot \binom{8}{2} \cdot \binom{6}{2} \cdot \binom{4}{2} \cdot
+  \binom{2}{2}
+\end{align*}
+Paarungen möglich sind.
+
+\subsection*{1.4}
+\label{sub:1_4}
+
+\begin{itemize}
+  \item[$\bigstar$ (a)] Wie viele Möglichkeiten gibt es, $100$ nicht
+    unterscheidbare Pflaumen auf $35$ Studenten aufzuteilen?
+  \item[(b)] Wie viele Möglichkeiten gibt es, wenn zusätzlich gefordert wird,
+    dass jeder Student wenigstens eine Pflaume erhält?
+\end{itemize}
+
+Begründen Sie Ihre Antwort mit Hilfe von Abbildungen!
+
+\begin{itemize}
+  \item[(a)] Seien $s_1, s_2, \dots, s_{35}$ die Studenten. Jedem Studenten muss
+    eine gewissen Anzahl Pflaumen zugeordnet werden. Das heißt wir suchen die
+    Anzahl aller Abbildungen $f : \{s_1, \dots, s_{35}\} \rightarrow
+    \mathbb{N}$, wobei $\sum\limits_{i=1}^{35} f(s_i) = 100$ gelten soll.
+
+    Dies sind alle Kombinationen mit Wiederholung und die Anzahl beträgt
+    $\binom{n+k-1}{k} = \binom{35+100-1}{100} = \binom{134}{100}$.
+
+  \item[(b)] Hier suchen wir die Anzahl aller surjektiven Abbildungen. Um die
+    Anzahl zu bestimmen, soll das Problem kurz visualisiert werden:
+    \begin{align*}
+      \underbrace{%
+        \bullet \mid \bullet \mid \bullet \mid
+        \bullet \mid \bullet \mid \bullet \mid
+        \cdots
+        \mid \bullet \mid \bullet \mid \bullet
+        \mid \bullet \mid \bullet \mid \bullet
+      }_{100 \text{\ Pflaumen, } 99 \text{\ Trennstriche}}
+    \end{align*}
+
+    Ein ausgefüllter Punkt $(\bullet)$ stellt dabei eine Pflaume dar und ein
+    Trennstrich gibt an, dass die Zuordnung der Pflaumen zum nächsten Studenten
+    wechselt. Die vereinfachte Konfiguration $\bullet \bullet \bullet \mid
+    \bullet \bullet \mid \bullet$ bedeutet, dass der erste Student $3$, der
+    zweite Student $2$ und der dritte Student $1$ Pflaume erhält.
+
+    Für die Anzahl aller surjektiven Abbildungen müssen von den $99$
+    Trennstrichen noch $34$ übrig bleiben, d.\,h.\ wir müssen $99-34=65$
+    entnehmen. Damit gibt es $\binom{99}{65}$ Möglichkeiten.
+
+    Alternativ könnte man auch von $100$ unverteilten Pflaumen ausgehen:
+    \begin{align*}
+      \underbrace{%
+        \bullet \bullet \bullet
+        \bullet \bullet \bullet
+        \cdots
+        \bullet \bullet \bullet
+        \bullet \bullet \bullet
+      }_{100 \text{\ Pflaumen}}
+    \end{align*}
+    und in die $99$ Zwischenräume $34$ Trennstriche verteilen. Dies ergibt
+    genauso viele Möglichkeiten wie eben, nämlich
+    $\binom{99}{34} = \binom{99}{65}$.
+\end{itemize}
+
+\subsection*{1.5}
+\label{sub:1_5}
+
+\begin{itemize}
+  \item[$\bigstar$] Beweisen Sie die Vandermonde Identität: für alle natürlichen
+    Zahlen $r, s$ und $n$ gilt
+    \begin{align*}
+      \sum\limits_{k=0}^n \binom{r}{k} \binom{s}{n-k} = \binom{r+s}{n}.
+    \end{align*}
+\end{itemize}
+
+Seien $R$ und $S$ disjunkte Mengen mit $|R| = r$ und $|S| = s$.
+
+$\binom{r+s}{n}$ bedeutet, dass wir die Anzahl aller $n$-elementigen Teilmengen
+aus $R \cup S$ bestimmen wollen.
+
+Dabei können $k$ Elemente aus $R$ kommen und die restlichen $(n-k)$ Elemente
+müssen $S$ entstammen. Für ein festes $k$ erhalten wir $\binom{r}{k}
+\binom{s}{n-k}$ Möglichkeiten. Danach müssen wir nur noch über alle $k$ von $0$
+bis $n$ summieren, um alle Möglichkeiten zu berechnen. Dabei stellen die Fälle
+$k > r$ bzw. $n-k > s$ kein Problem dar, da der Binomialkoeffizient dann $0$
+wird und nicht mehr auf die Gesamtanzahl addiert wird.
+
+\end{document}

@@ -1,0 +1,330 @@
+\documentclass[
+%% alle weiteren Papierformat einstellbar:
+a4paper, %apaper,
+%% keine Seitenzahlen:
+%empty,
+%% Schriftgröße (12pt, 11pt (Standard)):
+11pt,
+%% kleinere Überschriften:
+%smallheadings,
+]
+{scrartcl}
+
+% _das_ Mathepaket schlechthin:
+\usepackage[
+  %% Nummerierung von Gleichungen links:
+  leqno,
+  %% Ausgabe von Gleichungen linksbündig:
+  fleqn,
+]{mathtools}
+% und dazu noch ein paar Mathesymbole und so:
+% (muss vor mathspec geladen werden)
+\usepackage{amsmath, amssymb}
+
+\usepackage[]{parskip}
+
+% Um auch schöne Schriftarten auswählen zu können:
+\usepackage[MnSymbol]{mathspec}
+% Wir wollen, dass alle unsere Schriften für TeX und einander angepasst sind:
+\defaultfontfeatures{Mapping=tex-text, Scale=MatchLowercase}
+% Die Hauptschriftart:
+\setmainfont[Numbers=OldStyle]{Minion Pro}
+% Die Matheschriftart:
+\setmathsfont(Digits,Latin,Greek)[
+  Numbers={Lining, Proportional}
+]{Minion Pro}
+% Die Schriftart für serifenlose Texte (z.B. Überschriften):
+\setallsansfonts[]{Minion Pro}
+% Und die Schriftart für nichtproportionale Texte:
+\setallmonofonts[]{Fira Mono}
+
+% Deutsche Sprache bei Silbentrennung und Datum:
+\usepackage[ngerman]{babel}
+
+% St. Mary Road, liefert Symbole für theoretische Informatik (z.B. \lightning):
+\usepackage{stmaryrd}
+
+% nutze die volle Seite als Satzspiegel:
+\usepackage[
+  % Randbreite sei 1cm (sonst ist sie 1in):
+  cm,
+  % Kopf- und Fußzeile werden miteinbezogen:
+  headings
+]{fullpage}
+% verbesserte Tabellen
+% bietet u.a. die Spaltenmöglichkeit 'm{width}' = zentrierte Spalte mit fester
+% Breite
+\usepackage{array}
+% kann komplexe Linien in Tabellen ziehen:
+%\usepackage{hhline}
+% mehrseitige Tabellen:
+%\usepackage{longtable}
+% Tabellen mit gedehnten Spalten:
+%\usepackage{tabularx}
+% Pimpt enumerate auf (optionales Argument liefert Nummerierung):
+%\usepackage{enumerate}
+% Kann descriptions auf die selbe Höhe bringen:
+%\usepackage{enumitem}
+% Liefert Hyperlinks (\hyperref, \url, \href}
+\usepackage{hyperref}
+% Farben (wie bei TikZ):
+%\usepackage{xcolor}
+% Ändert den Zeilenabstand:
+\usepackage[
+  % nur eine Möglichkeit auswählen:
+  singlespacing
+  %onehalfspacing
+  %doublespacing
+]{setspace}
+% Schönere Tabellen
+% dazu gibt's neue Kommandos:
+% - \toprule[(Dicke)], \midrule[(Dicke)], \bottomrule[(Dicke)]
+% - \addlinespace: Extrahöhe zwischen Zeilen
+\usepackage{booktabs}
+% Schöne numerische Zitierungen:
+%\usepackage{cite}
+% Verbessert den Satz von Abbildungsüberschriften:
+%\usepackage{caption}
+% Ermöglicht durch \begin{linenumbers} Zeilennummern anzuzeigen:
+%\usepackage{lineno}
+% Ermöglicht Zugriff auf die letzte Seite (z.B. \pageref{LastPage}):
+\usepackage{lastpage}
+% Quelltext schön setzen:
+%\usepackage{listings}
+% Logische Beweise:
+%\usepackage{bussproofs}
+% Unterstreichungen (\uline, \uuline, \sout: durchgestrichen, \uwave):
+%\usepackage{ulem}
+% Kann alle möglichen Maße ändern
+% will man Querformat, dann:
+%\usepackage[landscape]{geometry}
+% bietet gestrichelte vert. Linien in Tabellen (':')
+%\usepackage{arydshln}
+% Quelltext schön setzen:
+% (verlangt "xelatex -shell-escape"!)
+%\usepackage{minted}
+% um Bilder einzubinden:
+%\usepackage{graphicx}
+% um in Tabellen eine Zelle über mehrere Zeilen laufen zu lassen:
+%\usepackage{multirow}
+
+% Coole Zeichnungen:
+%\usepackage{tikz}
+%\usetikzlibrary{
+  %backgrounds,
+  %mindmap,
+  %shapes.geometric,
+  %shapes.symbols,
+  %shapes.misc,
+  %shapes.multipart,
+  %positioning,
+  %fit,
+  %calc,
+  %arrows,
+  %automata,
+  %trees,
+  %decorations.pathreplacing,
+%}
+
+% eigens gebaute Lochmarken:
+%\usepackage{eso-pic}
+%\AddToShipoutPicture*{
+  %\put(\LenToUnit{0mm},\LenToUnit{228.5mm})
+    %{\rule{\LenToUnit{20pt}}{\LenToUnit{0.5pt}}}
+  %\put(\LenToUnit{0mm},\LenToUnit{68.5mm})
+    %{\rule{\LenToUnit{20pt}}{\LenToUnit{0.5pt}}}
+%}
+
+% coole Kopf- und Fußzeilen:
+\usepackage{fancyhdr}
+% Seitenstil ist natürlich fancy:
+\pagestyle{fancy}
+% alle Felder löschen:
+\fancyhf{}
+% Veranstaltung:
+\fancyhead[L]{Diskrete Strukturen und Optimierung}
+% Seriennummer:
+\fancyhead[C]{Serie 3}
+% Name und Matrikelnummer:
+\fancyhead[R]{Martin Darmüntzel (7251955)}
+%\fancyfoot[L]{}
+%\fancyfoot[C]{\thepage}
+\fancyfoot[C]{\thepage\,/\,\pageref{LastPage}}
+% Linie oben/unten:
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.0pt}
+
+\begin{document}
+
+% Punktetabelle für Korrektoren:
+\begin{center}
+  \begin{tabular}{cccccc}
+    \toprule
+    \textbf{3.1} & \textbf{3.2} & \textbf{3.3} & \textbf{3.4} & \textbf{3.5} & $\Sigma$\\
+    \midrule
+    & & & & & \\
+    \bottomrule
+  \end{tabular}
+\end{center}
+
+\subsection*{3.1}
+\label{sub:3.1}
+
+Seien $a,b,c,d \in \mathbb{Z} \times (\mathbb{N} \setminus \{ 0 \})$ mit $a =
+(a_1, a_2), b = (b_1, b_2), c = (c_1, c_2), d = (d_1, d_2)$. Es ist zu zeigen:
+\begin{align*}
+  a R b \wedge c R d \Rightarrow (a \circ c) R (b \circ d)
+\end{align*}
+Es gelten
+$a R b \Leftrightarrow a_1 b_2 = a_2 b_1$
+und
+$c R d \Leftrightarrow c_1 d_2 = c_2 d_1$
+und weiterhin
+$a \circ c = (a_1 c_2 + a_2 c_1, a_2 c_2)$
+und
+$b \circ d = (b_1 d_2 + b_2 d_1, b_2 d_2)$.
+
+Daraus folgt
+\begin{align*}
+  (a \circ c) R (b \circ d)
+  & \Leftrightarrow (a_1 c_2 + a_2 c_1, a_2 c_2) R (b_1 d_2 + b_2 d_1, b_2 d_2)\\
+  & \Leftrightarrow (a_1 c_2 + a_2 c_1) b_2 d_2 = (b_1 d_2 + b_2 d_1) a_2 c_2\\
+  & \Leftrightarrow
+    a_1 b_2 c_2 d_2 + a_2 b_2 c_1 d_2
+    =
+    a_2 b_1 c_2 d_2 + a_2 b_2 c_2 d_1\\
+  & \Leftrightarrow
+    a_1 b_2 c_2 d_2 + a_2 b_2 c_1 d_2
+    =
+    a_1 b_2 c_2 d_2 + a_2 b_2 c_1 d_2
+    & \text{(weil $a R b$ und $c R d$)}
+\end{align*}
+Da alle Schritte Äquivalenzumformungen waren, folgt aus der Gleichheit die
+Behauptung.
+
+\subsection*{3.2}
+\label{sub:3.2}
+
+Angenommen
+$2 \cdot 12^{2010} - 3$
+wäre durch $13$ teilbar, dann wäre
+$2 \cdot 12^{2010} - 3 \equiv 0 \mod 13$.
+Daraus würde folgen:
+\begin{align*}
+  2 \cdot 12^{2010} - 3 & \equiv 0 \mod 13 & \mid +3\\
+  2 \cdot 12^{2010} & \equiv 3 \equiv -10 \mod 13
+  & \mid :2 \text{\ (weil $\text{ggT}(2, 13) = 1$)}\\
+  12^{2010} & \equiv -5 \mod 13\\
+  {(-1)}^{2010} & \equiv -5 \mod 13 & \text{(da $12 \equiv -1 \mod 13$)}\\
+  1 & \equiv -5 \mod 13 & \lightning
+\end{align*}
+Damit ist $2 \cdot 12^{2010} - 3$ nicht durch $13$ teilbar.
+
+Wäre
+$2 \cdot 12^{2010} - 2$
+durch $13$ teilbar, dann wäre
+$2 \cdot 12^{2010} - 2 \equiv 0 \mod 13$.
+Daraus würde folgen:
+\begin{align*}
+  2 \cdot 12^{2010} - 2 & \equiv 0 \mod 13 & \mid +2\\
+  2 \cdot 12^{2010} & \equiv 2 \mod 13
+  & \mid :2 \text{\ (weil $\text{ggT}(2, 13) = 1$)}\\
+  12^{2010} & \equiv 1 \mod 13\\
+  {(-1)}^{2010} & \equiv 1 \mod 13 & \text{(da $12 \equiv -1 \mod 13$)}\\
+  1 & \equiv 1 \mod 13
+\end{align*}
+Damit ist $2 \cdot 12^{2010} - 2$ durch $13$ teilbar.
+
+\subsection*{3.3}
+\label{sub:3.3}
+
+\begin{center}
+  \begin{tabular}{cccccccccc}
+                            $+$ & $0$ & $1$ & $2$ & $x$ & $x+1$ & $x+2$ & $2x$ & $2x+1$ & $2x+2$\\
+    \cline{2-10}
+    \multicolumn{1}{c|}{$0$}    & $0$ & $1$ & $2$ & $x$ & $x+1$ & $x+2$ & $2x$ & $2x+1$ & $2x+2$\\
+    \multicolumn{1}{c|}{$1$}    & $1$ & $2$ & $0$ & $x+1$ & $x+2$ & $x$ & $2x+1$ & $2x+2$ & $2x$\\
+    \multicolumn{1}{c|}{$2$}    & $2$ & $0$ & $1$ & $x+2$ & $x$ & $x+1$ & $2x+2$ & $2x$ & $2x+1$\\
+    \multicolumn{1}{c|}{$x$}    & $x$ & $x+1$ & $x+2$ & $2x$ & $2x+1$ & $2x+2$ & $0$ & $1$ & $2$\\
+    \multicolumn{1}{c|}{$x+1$}  & $x+1$ & $x+2$ & $x$ & $2x+1$ & $2x+2$ & $2x$ & $1$ & $2$ & $0$\\
+    \multicolumn{1}{c|}{$x+2$}  & $x+2$ & $x$ & $x+1$ & $2x+2$ & $2x$ & $2x+1$ & $2$ & $0$ & $1$\\
+    \multicolumn{1}{c|}{$2x$}   & $2x$ & $2x+1$ & $2x+2$ & $0$ & $1$ & $2$ & $x$ & $x+1$ & $x+2$\\
+    \multicolumn{1}{c|}{$2x+1$} & $2x+1$ & $2x+2$ & $2x$ & $1$ & $2$ & $0$ & $x+1$ & $x+2$ & $x$\\
+    \multicolumn{1}{c|}{$2x+2$} & $2x+2$ & $2x$ & $2x+1$ & $2$ & $0$ & $1$ & $x+2$ & $x$ & $x+1$\\
+  \end{tabular}
+
+  \begin{tabular}{ccccccccc}
+                        $\cdot$ & $1$ & $2$ & $x$ & $x+1$ & $x+2$ & $2x$ & $2x+1$ & $2x+2$\\
+    \cline{2-9}
+    \multicolumn{1}{c|}{$1$}    & $1$ & $2$ & $x$ & $x+1$ & $x+2$ & $2x$ & $2x+1$ & $2x+2$\\
+    \multicolumn{1}{c|}{$2$}    & $2$ & $1$ & $2x$ & $2x+2$ & $2x+1$ & $x$ & $x+2$ & $x+1$\\
+    \multicolumn{1}{c|}{$x$}    & $x$ & $2x$ & $2x+1$ & $1$ & $x+1$ & $x+2$ & $2x+2$ & $2$\\
+    \multicolumn{1}{c|}{$x+1$}  & $x+1$ & $2x+2$ & $1$ & $x+2$ & $2x$ & $2$ & $x$ & $2x+1$\\
+    \multicolumn{1}{c|}{$x+2$}  & $x+2$ & $2x+1$ & $x+1$ & $2x$ & $2$ & $2x+2$ & $1$ & $x$\\
+    \multicolumn{1}{c|}{$2x$}   & $2x$ & $x$ & $x+2$ & $2$ & $2x+2$ & $2x+1$ & $x+1$ & $1$\\
+    \multicolumn{1}{c|}{$2x+1$} & $2x+1$ & $x+2$ & $2x+2$ & $x$ & $1$ & $x+1$ & $2$ & $2x$\\
+    \multicolumn{1}{c|}{$2x+2$} & $2x+2$ & $x+1$ & $2$ & $2x+1$ & $x$ & $1$ & $2x$ & $x+2$\\
+  \end{tabular}
+\end{center}
+
+\subsection*{3.4}
+\label{sub:3.4}
+
+Der euklidische Algorithmus liefert
+\begin{center}
+  \begin{tabular}{llll}
+    \toprule
+    $a$ & $b$ & $q$ & $r$\\
+    \midrule
+    $2903$ & $2010$ & $1$ & $893$\\
+    \midrule
+    $2010$ & $893$ & $2$ & $224$\\
+    \midrule
+    $893$ & $224$ & $3$ & $221$\\
+    \midrule
+    $224$ & $221$ & $1$ & $3$\\
+    \midrule
+    $221$ & $3$ & $73$ & $2$\\
+    \midrule
+    $3$ & $2$ & $1$ & $1$\\
+    \midrule
+    $2$ & $1$ & $1$ & $0$\\
+  \end{tabular}
+\end{center}
+Damit ist $d = 1$. Wir bestimmen $\alpha$ und $\beta$ mit
+$d = \alpha a + \beta b$:
+\begin{align*}
+  1 & = 3 - 2\\
+    & = 3 - (221 - 73 \cdot 3)
+      = 74 \cdot 3 - 221\\
+    & = 74 \cdot (224 - 1 \cdot 221) - 221
+      = 74 \cdot 224 - 75 \cdot 221\\
+    & = 74 \cdot 224 - 75 \cdot (893 - 3 \cdot 224)
+      = 299 \cdot 224 - 75 \cdot 893\\
+    & = 299 \cdot (2010 - 2 \cdot 893) - 75 \cdot 893
+      = 299 \cdot 2010 - 673 \cdot 893\\
+    & = 299 \cdot 2010 - 673 \cdot (2903 - 2010)
+      = 972 \cdot 2010 - 673 \cdot 2903
+\end{align*}
+Damit ist $\alpha = -673$ und $\beta = 972$.
+
+\subsection*{3.5}
+\label{sub:3.5}
+
+Es ist zu zeigen: für beliebige $a,b,c \in \mathbb{R}, n \in \mathbb{N}_+$ gilt:
+\begin{align*}
+  a \circ (b \circ c) = (a \circ b) \circ c
+\end{align*}
+Einerseits ist
+\begin{align*}
+  a \circ (b \circ c) = a \circ (b^n c) = a^n b^n c
+\end{align*}
+Andererseits gilt
+\begin{align*}
+  (a \circ b) \circ c = (a^n b) \circ c = {(a^n b)}^n c = a^{n^2} b^n c
+\end{align*}
+Exponentenvergleich führt zu $n^2 = n$
+und da $n \in \mathbb{N}_+$,
+folgt $n = 1$.
+
+\end{document}

@@ -1,0 +1,322 @@
+\documentclass[
+%% alle weiteren Papierformat einstellbar:
+a4paper, %apaper,
+%% keine Seitenzahlen:
+%empty,
+%% Schriftgröße (12pt, 11pt (Standard)):
+11pt,
+%% kleinere Überschriften:
+%smallheadings,
+]
+{scrartcl}
+
+% _das_ Mathepaket schlechthin:
+\usepackage[
+  %% Nummerierung von Gleichungen links:
+  leqno,
+  %% Ausgabe von Gleichungen linksbündig:
+  fleqn,
+]{mathtools}
+% und dazu noch ein paar Mathesymbole und so:
+% (muss vor mathspec geladen werden)
+\usepackage{amsmath, amssymb}
+
+\usepackage[]{parskip}
+
+% Um auch schöne Schriftarten auswählen zu können:
+\usepackage[MnSymbol]{mathspec}
+% Wir wollen, dass alle unsere Schriften für TeX und einander angepasst sind:
+\defaultfontfeatures{Mapping=tex-text, Scale=MatchLowercase}
+% Die Hauptschriftart:
+\setmainfont[Numbers=OldStyle]{Minion Pro}
+% Die Matheschriftart:
+\setmathsfont(Digits,Latin,Greek)[
+  Numbers={Lining, Proportional}
+]{Minion Pro}
+% Die Schriftart für serifenlose Texte (z.B. Überschriften):
+\setallsansfonts[]{Minion Pro}
+% Und die Schriftart für nichtproportionale Texte:
+\setallmonofonts[]{Fira Mono}
+
+% Deutsche Sprache bei Silbentrennung und Datum:
+\usepackage[ngerman]{babel}
+
+% St. Mary Road, liefert Symbole für theoretische Informatik (z.B. \lightning):
+\usepackage{stmaryrd}
+
+% nutze die volle Seite als Satzspiegel:
+\usepackage[
+  % Randbreite sei 1cm (sonst ist sie 1in):
+  cm,
+  % Kopf- und Fußzeile werden miteinbezogen:
+  headings
+]{fullpage}
+% verbesserte Tabellen
+% bietet u.a. die Spaltenmöglichkeit 'm{width}' = zentrierte Spalte mit fester
+% Breite
+\usepackage{array}
+% kann komplexe Linien in Tabellen ziehen:
+%\usepackage{hhline}
+% mehrseitige Tabellen:
+%\usepackage{longtable}
+% Tabellen mit gedehnten Spalten:
+%\usepackage{tabularx}
+% Pimpt enumerate auf (optionales Argument liefert Nummerierung):
+%\usepackage{enumerate}
+% Kann descriptions auf die selbe Höhe bringen:
+%\usepackage{enumitem}
+% Liefert Hyperlinks (\hyperref, \url, \href}
+\usepackage{hyperref}
+% Farben (wie bei TikZ):
+%\usepackage{xcolor}
+% Ändert den Zeilenabstand:
+\usepackage[
+  % nur eine Möglichkeit auswählen:
+  singlespacing
+  %onehalfspacing
+  %doublespacing
+]{setspace}
+% Schönere Tabellen
+% dazu gibt's neue Kommandos:
+% - \toprule[(Dicke)], \midrule[(Dicke)], \bottomrule[(Dicke)]
+% - \addlinespace: Extrahöhe zwischen Zeilen
+\usepackage{booktabs}
+% Schöne numerische Zitierungen:
+%\usepackage{cite}
+% Verbessert den Satz von Abbildungsüberschriften:
+%\usepackage{caption}
+% Ermöglicht durch \begin{linenumbers} Zeilennummern anzuzeigen:
+%\usepackage{lineno}
+% Ermöglicht Zugriff auf die letzte Seite (z.B. \pageref{LastPage}):
+\usepackage{lastpage}
+% Quelltext schön setzen:
+%\usepackage{listings}
+% Logische Beweise:
+%\usepackage{bussproofs}
+% Unterstreichungen (\uline, \uuline, \sout: durchgestrichen, \uwave):
+%\usepackage{ulem}
+% Kann alle möglichen Maße ändern
+% will man Querformat, dann:
+%\usepackage[landscape]{geometry}
+% bietet gestrichelte vert. Linien in Tabellen (':')
+%\usepackage{arydshln}
+% Quelltext schön setzen:
+% (verlangt "xelatex -shell-escape"!)
+%\usepackage{minted}
+% um Bilder einzubinden:
+%\usepackage{graphicx}
+% um in Tabellen eine Zelle über mehrere Zeilen laufen zu lassen:
+%\usepackage{multirow}
+
+% Coole Zeichnungen:
+%\usepackage{tikz}
+%\usetikzlibrary{
+  %backgrounds,
+  %mindmap,
+  %shapes.geometric,
+  %shapes.symbols,
+  %shapes.misc,
+  %shapes.multipart,
+  %positioning,
+  %fit,
+  %calc,
+  %arrows,
+  %automata,
+  %trees,
+  %decorations.pathreplacing,
+%}
+
+% eigens gebaute Lochmarken:
+%\usepackage{eso-pic}
+%\AddToShipoutPicture*{
+  %\put(\LenToUnit{0mm},\LenToUnit{228.5mm})
+    %{\rule{\LenToUnit{20pt}}{\LenToUnit{0.5pt}}}
+  %\put(\LenToUnit{0mm},\LenToUnit{68.5mm})
+    %{\rule{\LenToUnit{20pt}}{\LenToUnit{0.5pt}}}
+%}
+
+% coole Kopf- und Fußzeilen:
+\usepackage{fancyhdr}
+% Seitenstil ist natürlich fancy:
+\pagestyle{fancy}
+% alle Felder löschen:
+\fancyhf{}
+% Veranstaltung:
+\fancyhead[L]{Diskrete Strukturen und Optimierung}
+% Seriennummer:
+\fancyhead[C]{Serie 2}
+% Name und Matrikelnummer:
+\fancyhead[R]{Martin Darmüntzel (7251955)}
+%\fancyfoot[L]{}
+%\fancyfoot[C]{\thepage}
+\fancyfoot[C]{\thepage\,/\,\pageref{LastPage}}
+% Linie oben/unten:
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.0pt}
+
+\begin{document}
+
+% Punktetabelle für Korrektoren:
+\begin{center}
+  \begin{tabular}{cccccc}
+    \toprule
+    \textbf{2.1} & \textbf{2.2} & \textbf{2.3} & \textbf{2.4} & \textbf{2.5} & $\Sigma$\\
+    \midrule
+    & & & & & \\
+    \bottomrule
+  \end{tabular}
+\end{center}
+
+\subsection*{2.1}
+\label{sub:2_1}
+
+\begin{itemize}
+  \item[$\bigstar$] Bestimmen Sie die explizite Lösung der Rekursion
+    \begin{align*}
+      y_{n+2} - 7y_{n+1} + 10y_n = 3^n \text{\ für } n \geq 0, y_0 = 0, y_1 = 1.
+    \end{align*}
+
+  \item Wir lösen die charakteristische Gleichung der homogenen
+    Rekursionsgleichung $\lambda^2 - 7\lambda + 10 = 0$ und erhalten $\lambda_1
+    = 2$ und $\lambda_2 = 5$.
+
+    Als Ansatz für die spezielle Lösung wählen wir $y_n^{(s)} = c \cdot 3^n$. In
+    die Rekursionsgleichung eingesetzt erhalten wir:
+    \begin{align*}
+      c \cdot 3^{n+2} - 7 c \cdot 3^{n+1} + 10c \cdot 3^n & = 3^n\\
+      c \cdot 3^2 - 7c \cdot 3^1 + 10c & = 1\\
+      c & = - \frac{1}{2}
+    \end{align*}
+    Mittels der vorgegebenen Anfangswerte bestimmen wir die Koeffizienten der
+    allgemeinen Lösung $y_n^{(a)} = - \frac{1}{2} 3^n + c_1 2^n + c_2 5^n$.
+    \begin{align*}
+      n = 0: \quad & - \frac{1}{2} 3^0 + c_1 2^0 + c_2 5^0 = 0\\
+      n = 1: \quad & - \frac{1}{2} 3^1 + c_1 2^1 + c_2 5^1 = 1
+    \end{align*}
+    Das heißt, wir müssen folgendes Gleichungssystem lösen:
+    \begin{align*}
+      c_1 + c_2 & = \frac{1}{2}\\
+      2 c_1 + 5 c_2 & = \frac{5}{2}
+    \end{align*}
+    Dieses hat die Lösungen $c_1 = 0$ und $c_2 = \frac{1}{2}$ und somit lautet
+    die explizite Lösung
+    \begin{align*}
+      y_n & = - \frac{1}{2} 3^n + 0 \cdot 2^n + \frac{1}{2} \cdot 5^n = \frac{1}{2} \left( 5^n - 3^n \right)
+    \end{align*}
+\end{itemize}
+
+\subsection*{2.2}
+\label{sub:2_2}
+
+\begin{itemize}
+  \item[$\bigstar$] Bestimmen Sie die explizite Lösung der Rekursion
+    \begin{align*}
+      y_{n+3} - 5y_{n+2} + 7y_{n+1} - 3y_n = 0
+      \text{\ für } n \geq 0, y_0 = 0, y_1 = 0, y_2 = 4.
+    \end{align*}
+
+  \item Wir lösen wieder die charakteristische Gleichung $\lambda^3 - 5\lambda
+    ^2 + 7\lambda - 3 = 0$. Da alle Koeffizienten ganze Zahlen sind, kommen als
+    potenzielle Nullstellen nur Teiler des Absolutglieds ($-3$) infrage.
+    Ausprobieren bringt $\lambda_1 = 1$ und damit erhalten wir auch die
+    restlichen Nullstellen $\lambda_2 = 1$ und $\lambda_3 = 3$.
+
+    Die homogene Lösung lautet also $y_n^{(h)} = c_1 1^n + c_2 \cdot n \cdot 1^n
+    + c_3 \cdot 3^n$. Mit den Anfangswerten bestimmten wir wieder die
+    Koeffizienten, indem wir folgendes Gleichungssystem lösen:
+    \begin{align*}
+      n = 0: \quad & 0 = c_1 + 0     + c_3\\
+      n = 1: \quad & 0 = c_1 + c_2   + 3c_3\\
+      n = 2: \quad & 4 = c_1 + 2c_2  + 9c_3
+    \end{align*}
+    Wir erhalten $c_1 = -1, c_2 = -2$ und $c_3 = 1$, sodass die explizite Lösung
+    $y_n = 3^n - 2n - 1$ lautet.
+\end{itemize}
+
+\subsection*{2.3}
+\label{sub:2_3}
+
+\begin{itemize}
+  \item[$\bigstar$] Eine Abschätzung $a_n$ für die Komplexität des Algorithmus
+    QUICKSORT zum Sortieren einer $n$-elementigen Liste genügt der Rekursion
+    \begin{align*}
+      a_0 = 0, \qquad n a_n = (n+1) a_{n-1} + 2(n-1) \text{\ für } n \geq 1.
+    \end{align*}
+    Man bestimme eine explizite Formel für $a_n$ und beweise, dass $a_n \leq
+    2(n+1)(1 + \ln n)$, also $a_n = O(n \log n)$ gilt.
+
+  \item Es sind $p_n = n$, $q_n = n+1$ und $r_n = 2(n-1)$. Damit ist
+    $s_n
+    = \frac{1 \cdot 2 \cdot \ldots \cdot (n-1)}{2 \cdot 3 \cdot \ldots \cdot (n+1)}
+    = \frac{1}{n (n+1)}$ (was auch für den Fall $n=1$ funktioniert) und weiter
+    $a_n
+    = \frac{n (n+1)}{n} \left(0 + \sum\limits_{i=1}^n \frac{2(i-1)}{i(i+1)} \right)
+    = 2(n+1) \sum\limits_{i=1}^n \frac{i-1}{i(i+1)}$.
+
+    Bleibt zu zeigen, dass $a_n \leq 2(n+1)(1+\ln n)$ gilt:
+    \begin{align*}
+      a_n & \leq 2(n+1)(1+\ln n)\\
+      2(n+1) \sum\limits_{i=1}^n \frac{i-1}{i(i+1)} & \leq 2(n+1)(1+\ln n)\\
+      \sum\limits_{i=1}^n \frac{i-1}{i(i+1)} & \leq 1+\ln n
+    \end{align*}
+    Da
+    $\sum\limits_{i=1}^n \frac{i-1}{i(i+1)}
+    = 0 + \sum\limits_{i=2}^n \frac{i-1}{i(i+1)}$
+    und
+    $\sum\limits_{i=2}^n \frac{i-1}{i(i+1)}
+    < \sum\limits_{i=2}^n \frac{1}{i}
+    < \int_1^n \frac{1}{x} dx = \ln n$, gilt inbesondere die zu zeigende
+    Ungleichung.
+\end{itemize}
+
+
+\subsection*{2.4}
+\label{sub:2_4}
+
+\begin{itemize}
+  \item[$\bigstar$] Man bestimme die Anzahl der Wörter der Länge $n \geq 3$, die
+    aus den Buchstaben $a,b,c,d,e$ gebildet werden können und wenigstens einmal
+    $a$, wenigstens einmal $b$ und wenigstens einmal $c$ enthalten.
+
+  \item Die Anzahl aller Wörter der Länge $n$ über einem Alphabet von $5$
+    Buchstaben beträgt $5^n$. Von dieser Anzahl bestimmen wir mit dem Prinzip
+    von Inklusion und Exklusion die Anzahl der gesuchten Wörter.
+
+    Die Anzahl der Wörter der Länge $n$, die den Buchstaben $a$ (bzw. $b$ oder
+    $c$) nicht enthält, beträgt $4^n$. Die Anzahl der Wörter, die zwei der
+    besonderen Buchstaben nicht enthalten, beträgt $3^n$ und die Anzahl der
+    Wörter, die alle besonderen Buchstaben nicht enthalten, beträgt $2^n$.
+
+    Das PIE liefert uns die gesuchte Anzahl:
+    $5^n - 3 \cdot 4^n + 3 \cdot 3^n - 2^n$
+\end{itemize}
+
+\subsection*{2.5}
+\label{sub:2_5}
+
+\begin{itemize}
+  \item[$\bigstar$ (a)] Bestimmen Sie die Anzahl aller surjektiven Abbildungen
+    von der Menge $\{1,2,3,4\}$ auf die Menge $\{a,b,c\}$. Geben Sie die Lösung
+    als konkrete Zahl an.
+
+  \item Die allgemeine Formel für die Anzahl aller surjektiven Abbildungen einer
+    $n$-e"-le"-men"-ti"-gen Menge in eine $k$-e"-le"-men"-ti"-ge Menge lautet
+    $k! \cdot S_{n,k}$. In diesem Fall also $3! \cdot S_{4,3} = 3! \cdot 6 =
+    36$.
+
+  \item[(b)] Wie groß ist die Anzahl aller Abbildungen einer $n$-elementigen
+    Mengen in eine $k$-elementige Menge, bei denen genau ein Element nicht als
+    Bild vorkommt?
+
+  \item Da genau ein Element nicht als Bild vorkommen soll, alle anderen aber
+    schon, suchen wir zunächst die Anzahl aller surjektiven Abbildungen einer
+    $n$-elementigen Menge in eine $(k-1)$-elementige Menge. Diese ist – wie in
+    Teil (a) schon erwähnt – gleich $(k-1)! \cdot S_{n, k-1}$.
+
+    Weiterhin können wir das nicht getroffene Element der $k$-elementigen Menge
+    beliebig wählen, sodass wir mit $k$ multiplizieren müssen. Dies ergibt
+    $k(k-1)! \cdot S_{n, k-1} = k! \cdot S_{n, k-1}$.
+\end{itemize}
+
+
+\end{document}

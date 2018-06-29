@@ -1,0 +1,241 @@
+\documentclass[
+%% alle weiteren Papierformat einstellbar:
+a4paper, %apaper,
+%% keine Seitenzahlen:
+%empty,
+%% Schriftgröße (12pt, 11pt (Standard)):
+11pt,
+%% kleinere Überschriften:
+%smallheadings,
+]
+{scrartcl}
+
+% _das_ Mathepaket schlechthin:
+\usepackage[
+  %% Nummerierung von Gleichungen links:
+  leqno,
+  %% Ausgabe von Gleichungen linksbündig:
+  fleqn,
+]{mathtools}
+% und dazu noch ein paar Mathesymbole und so:
+% (muss vor mathspec geladen werden)
+\usepackage{amsmath, amssymb}
+
+\usepackage[]{parskip}
+
+% Um auch schöne Schriftarten auswählen zu können:
+\usepackage[MnSymbol]{mathspec}
+% Wir wollen, dass alle unsere Schriften für TeX und einander angepasst sind:
+\defaultfontfeatures{Mapping=tex-text, Scale=MatchLowercase}
+% Die Hauptschriftart:
+\setmainfont[Numbers=OldStyle]{Minion Pro}
+% Die Matheschriftart:
+\setmathsfont(Digits,Latin,Greek)[
+  Numbers={Lining, Proportional}
+]{Minion Pro}
+% Die Schriftart für serifenlose Texte (z.B. Überschriften):
+\setallsansfonts[]{Minion Pro}
+% Und die Schriftart für nichtproportionale Texte:
+\setallmonofonts[]{Fira Mono}
+
+% Deutsche Sprache bei Silbentrennung und Datum:
+\usepackage[ngerman]{babel}
+
+% St. Mary Road, liefert Symbole für theoretische Informatik (z.B. \lightning):
+\usepackage{stmaryrd}
+
+% nutze die volle Seite als Satzspiegel:
+\usepackage[
+  % Randbreite sei 1cm (sonst ist sie 1in):
+  cm,
+  % Kopf- und Fußzeile werden miteinbezogen:
+  headings
+]{fullpage}
+% verbesserte Tabellen
+% bietet u.a. die Spaltenmöglichkeit 'm{width}' = zentrierte Spalte mit fester
+% Breite
+\usepackage{array}
+% kann komplexe Linien in Tabellen ziehen:
+%\usepackage{hhline}
+% mehrseitige Tabellen:
+%\usepackage{longtable}
+% Tabellen mit gedehnten Spalten:
+%\usepackage{tabularx}
+% Pimpt enumerate auf (optionales Argument liefert Nummerierung):
+\usepackage{enumerate}
+% Kann descriptions auf die selbe Höhe bringen:
+%\usepackage{enumitem}
+% Liefert Hyperlinks (\hyperref, \url, \href}
+\usepackage{hyperref}
+% Farben (wie bei TikZ):
+%\usepackage{xcolor}
+% Ändert den Zeilenabstand:
+\usepackage[
+  % nur eine Möglichkeit auswählen:
+  singlespacing
+  %onehalfspacing
+  %doublespacing
+]{setspace}
+% Schönere Tabellen
+% dazu gibt's neue Kommandos:
+% - \toprule[(Dicke)], \midrule[(Dicke)], \bottomrule[(Dicke)]
+% - \addlinespace: Extrahöhe zwischen Zeilen
+\usepackage{booktabs}
+% Schöne numerische Zitierungen:
+%\usepackage{cite}
+% Verbessert den Satz von Abbildungsüberschriften:
+%\usepackage{caption}
+% Ermöglicht durch \begin{linenumbers} Zeilennummern anzuzeigen:
+%\usepackage{lineno}
+% Ermöglicht Zugriff auf die letzte Seite (z.B. \pageref{LastPage}):
+\usepackage{lastpage}
+% Quelltext schön setzen:
+%\usepackage{listings}
+% Logische Beweise:
+%\usepackage{bussproofs}
+% Unterstreichungen (\uline, \uuline, \sout: durchgestrichen, \uwave):
+%\usepackage{ulem}
+% Kann alle möglichen Maße ändern
+% will man Querformat, dann:
+%\usepackage[landscape]{geometry}
+% bietet gestrichelte vert. Linien in Tabellen (':')
+%\usepackage{arydshln}
+% Quelltext schön setzen:
+% (verlangt "xelatex -shell-escape"!)
+%\usepackage{minted}
+% um Bilder einzubinden:
+%\usepackage{graphicx}
+% um in Tabellen eine Zelle über mehrere Zeilen laufen zu lassen:
+%\usepackage{multirow}
+
+% Coole Zeichnungen:
+%\usepackage{tikz}
+%\usetikzlibrary{
+  %backgrounds,
+  %mindmap,
+  %shapes.geometric,
+  %shapes.symbols,
+  %shapes.misc,
+  %shapes.multipart,
+  %positioning,
+  %fit,
+  %calc,
+  %arrows,
+  %automata,
+  %trees,
+  %decorations.pathreplacing,
+%}
+
+% eigens gebaute Lochmarken:
+%\usepackage{eso-pic}
+%\AddToShipoutPicture*{
+  %\put(\LenToUnit{0mm},\LenToUnit{228.5mm})
+    %{\rule{\LenToUnit{20pt}}{\LenToUnit{0.5pt}}}
+  %\put(\LenToUnit{0mm},\LenToUnit{68.5mm})
+    %{\rule{\LenToUnit{20pt}}{\LenToUnit{0.5pt}}}
+%}
+
+% coole Kopf- und Fußzeilen:
+\usepackage{fancyhdr}
+% Seitenstil ist natürlich fancy:
+\pagestyle{fancy}
+% alle Felder löschen:
+\fancyhf{}
+% Veranstaltung:
+\fancyhead[L]{Diskrete Strukturen und Optimierung}
+% Seriennummer:
+\fancyhead[C]{Serie 5}
+% Name und Matrikelnummer:
+\fancyhead[R]{Martin Darmüntzel (7251955)}
+%\fancyfoot[L]{}
+%\fancyfoot[C]{\thepage}
+\fancyfoot[C]{\thepage\,/\,\pageref{LastPage}}
+% Linie oben/unten:
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.0pt}
+
+\renewcommand{\mod}{\text{\ mod }}
+
+\begin{document}
+
+% Punktetabelle für Korrektoren:
+\begin{center}
+  \begin{tabular}{cccccc}
+    \toprule
+    \textbf{5.1} & \textbf{5.2} & \textbf{5.3} & \textbf{5.4} & \textbf{5.5} & $\Sigma$\\
+    \midrule
+    & & & & & \\
+    \bottomrule
+  \end{tabular}
+\end{center}
+
+\begin{enumerate}[{5.}1.]
+  \item Gewählt wurden $p = 11, q = 17$ und $g = 97$. Damit sind $n = 187$ und
+    $m = (p-1)(q-1) = 160$.
+
+    Mit dem erweiterten euklidischen Algorithmus ermitteln wir das
+    multiplikative Inverse von $g$ modulo $m$. Da wir diese Aufgabe in den
+    letzten zwei Serien ausführlich gelöst haben, schreiben wir nicht erneut die
+    komplette Tabelle hin. Es gilt $33 \cdot 97 \equiv 1 \mod 160$, also $k =
+    33$.
+
+    Der Empfänger $E$ veröffentlicht dem Absender $A$ das Schlüsselpaar $(n, k)
+    = (187, 33)$.
+
+    $A$ verschlüsselt die Nachricht $a = 20$ wie folgt:
+    \begin{align*}
+      e & = a^k \mod n\\
+        & = 20^{33} \mod 187\\
+        & = 3
+    \end{align*}
+    $E$ entschlüsselt die übertragene Nachricht $e = 3$ auf folgende Weise:
+    \begin{align*}
+      b & = e^g \mod n\\
+        & = 3^{97} \mod 187\\
+        & = 20
+    \end{align*}
+
+  \item Die Prüfgleichung des ISBN-Codes führt zu $240 + 6 x_6 \equiv 0 \mod
+    11$. Umstellen bringt $6 x_6 \equiv 2 \mod 11$ und geschicktes Ausprobieren
+    führt zu $x_6 = 4$ (aus $6 \cdot 2 \equiv 1 \mod 11$ folgt $2 \cdot 6 \cdot
+    2 \equiv 2 \cdot 1 \mod 11$, also $x_6 = 4$).
+
+  \item Nein, es ist nicht möglich 2 benachbarte Ziffern zu vertauschen, ohne
+    dass sich die Prüfsumme ändert. Eine Begründung dafür wurde nicht verlangt.
+
+  \item Wir formen das Gleichungssystem wie folgt um:
+    \begin{align*}
+      \begin{pmatrix}
+        1 & 0 & 1 & 3 & 2 & 4\\
+          & 1 & 1 & 1 & 1 & 1\\
+          &   & 1 & 2 & 3 & 4\\
+          &   & 1 & 4 & 4 & 1
+      \end{pmatrix}
+      \leadsto
+      \begin{pmatrix}
+        1 & 0 & 1 & 3 & 2 & 4\\
+          & 1 & 1 & 1 & 1 & 1\\
+          &   & 1 & 2 & 3 & 4\\
+          &   &   & 2 & 1 & 2
+      \end{pmatrix}
+    \end{align*}
+    Aus der letzten Zeile $2x_4 + x_5 + 2x_6 = 0$ folgt $x_4 = t, x_6 = s$ und
+    $x_5 = 3(t+s)$, wobei $t,s \in \mathbb{Z}/_5$. Aus den restlichen Zeilen
+    ergeben sich $x_3 = 4t+2s, x_2 = 2t+4s$ und $x_1 = 2t+3s$, sodass sich die
+    Lösungsmenge $L$ darstellen lässt als
+    \begin{align*}
+      L & = \left\{
+        \begin{pmatrix}
+          2t+3s\\
+          2t+4s\\
+          4t+2s\\
+          t\\
+          3(t+s)\\
+          s
+        \end{pmatrix}
+      \right\}
+      \text{ mit } t,s \in \mathbb{Z}/_5
+    \end{align*}
+\end{enumerate}
+
+\end{document}
