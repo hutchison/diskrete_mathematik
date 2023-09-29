@@ -941,7 +941,7 @@ gilt nach dem Satz von Fermat-Euler
 $2007^{\phi(2611)} \equiv 1 \mod 2611$.
 Es ist
 $\phi(2611) = \phi(7 \cdot 373) = \phi(7) \cdot \phi(373) = 6 \cdot 372 = 2232$.
-Das heißt, dass $2007^{2231} \mod 2611$ das inverse Element ist. Diese Zahl
+Das heißt, dass $2007^{2232} \mod 2611$ das inverse Element ist. Diese Zahl
 per Hand auszurechnen ist jedoch deutlich schwieriger als gedacht.
 
 Daher ermitteln wir das multiplikative Inverse altmodisch mit dem Lemma von
